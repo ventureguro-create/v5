@@ -5287,7 +5287,7 @@ const HeroSection = ({ heroSettings }) => {
         console.error('Error fetching hero buttons:', error);
         // Fallback to default buttons
         setHeroButtons([
-          { id: '1', label: 'Explore Platform', url: '#platform', style: 'primary' },
+          { id: '1', label: 'Explore Platform', url: 'https://example.com/explore', style: 'primary' },
           { id: '2', label: 'Buy NFT', url: 'https://example.com/nft', style: 'secondary' }
         ]);
       }
