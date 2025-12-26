@@ -5534,7 +5534,6 @@ const BuyNFTModal = ({ isOpen, onClose, nftSettings }) => {
 
 // Hero Section
 const HeroSection = ({ heroSettings }) => {
-  const [showNFTModal, setShowNFTModal] = useState(false);
   const [heroButtons, setHeroButtons] = useState([]);
   const t = useTranslation();
   const { language } = useLanguage();
@@ -5549,8 +5548,8 @@ const HeroSection = ({ heroSettings }) => {
         console.error('Error fetching hero buttons:', error);
         // Fallback to default buttons
         setHeroButtons([
-          { id: '1', label_ru: 'Изучить платформу', label_en: 'Explore Platform', url: '#platform', style: 'primary' },
-          { id: '2', label_ru: 'Купить NFT', label_en: 'Buy NFT', url: '#nft', style: 'secondary' }
+          { id: '1', label: 'Explore Platform', url: '#platform', style: 'primary' },
+          { id: '2', label: 'Buy NFT', url: 'https://example.com/nft', style: 'secondary' }
         ]);
       }
     };
@@ -5563,14 +5562,6 @@ const HeroSection = ({ heroSettings }) => {
     { value: '$50M+', label_ru: 'Объём торгов', label_en: 'Trading Volume' },
     { value: '666', label_ru: 'NFT Коллекция', label_en: 'NFT Collection' },
   ];
-  
-  const nftSettings = heroSettings?.nft_settings || {
-    price_per_box: 150,
-    discount_threshold: 3,
-    discount_percent: 10,
-    total_supply: 666,
-    max_per_wallet: 100
-  };
   
   // Get text content from heroSettings or fallback to translations
   const badge = heroSettings?.badge || t('hero.badge');
