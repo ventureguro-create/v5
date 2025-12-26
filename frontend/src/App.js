@@ -647,6 +647,7 @@ const UnifiedAdminPanel = ({ isOpen, onClose, cards, team, platformSettings, roa
           {activeTab === 'community' && <CommunityAdminContent communitySettings={communitySettings} onCommunityUpdate={onCommunityUpdate} />}
           {activeTab === 'evolution' && <EvolutionAdminContent onUpdate={() => {}} />}
           {activeTab === 'hero' && <HeroAdminContent />}
+          {activeTab === 'about' && <AboutAdminContent />}
         </div>
       </div>
     );
