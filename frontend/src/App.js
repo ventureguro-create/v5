@@ -5595,10 +5595,10 @@ const HeroSection = ({ heroSettings }) => {
   };
   
   // Get text content from heroSettings or fallback to translations
-  const badge = language === 'ru' ? (heroSettings?.badge_ru || t('hero.badge')) : (heroSettings?.badge_en || t('hero.badge'));
-  const titleLine1 = language === 'ru' ? (heroSettings?.title_line1_ru || t('hero.titleLine1')) : (heroSettings?.title_line1_en || t('hero.titleLine1'));
-  const titleLine2 = language === 'ru' ? (heroSettings?.title_line2_ru || t('hero.titleLine2')) : (heroSettings?.title_line2_en || t('hero.titleLine2'));
-  const subtitle = language === 'ru' ? (heroSettings?.subtitle_ru || t('hero.subtitle')) : (heroSettings?.subtitle_en || t('hero.subtitle'));
+  const badge = heroSettings?.badge || t('hero.badge');
+  const titleLine1 = heroSettings?.title_line1 || t('hero.titleLine1');
+  const titleLine2 = heroSettings?.title_line2 || t('hero.titleLine2');
+  const subtitle = heroSettings?.subtitle || t('hero.subtitle');
   
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden" data-testid="hero-section">
