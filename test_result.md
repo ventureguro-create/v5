@@ -1,5 +1,22 @@
 # Test Results for FOMO Landing Page
 
+## Latest Updates (2025-12-26):
+### P0 - Team Section Fix (COMPLETED):
+- Team Section now correctly displays two separate horizontal scrolling rows:
+  1. **Core Team** - Large cards with "Our Team" badge, title, description
+  2. **Team Members** - Smaller cards with "Our People" badge, separate horizontal scroll
+- Database contains 7 Core Team + 10 Team Members (17 total)
+- Both sections have working navigation buttons for horizontal scrolling
+
+### P1 - About Us Admin Panel (COMPLETED):
+- New "About" tab added to admin panel with full editing capabilities
+- Editable fields: Badge, Title, Title Highlight, Subtitle, Description, Bold keywords, Whitepaper Button Text
+- Features section: Add/Remove features with Icon selector, Color selector, Title, Description
+- Frontend displays data from API correctly
+
+### P2 - Admin Logo (VERIFIED):
+- Logo is visible in admin panel header
+
 ## Testing Protocol
 # THIS SECTION CONTAINS CRITICAL TESTING INSTRUCTIONS FOR BOTH AGENTS
 # BOTH MAIN_AGENT AND TESTING_AGENT MUST PRESERVE THIS ENTIRE BLOCK
