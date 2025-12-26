@@ -5446,7 +5446,38 @@ const HeroSection = ({ heroSettings }) => {
 
 // About Section
 const AboutSection = ({ whitepaperUrl }) => {
+  const [aboutSettings, setAboutSettings] = useState(null);
   const t = useTranslation();
+
+  useEffect(() => {
+    const fetchAboutSettings = async () => {
+      try {
+        const response = await axios.get(`${API}/about-settings`);
+        setAboutSettings(response.data);
+      } catch (error) {
+        console.error('Error fetching about settings:', error);
+      }
+    };
+    fetchAboutSettings();
+  }, []);
+
+  // Use settings from API or fallback to hardcoded
+  const badge = aboutSettings?.badge || "About Us";
+  const title = aboutSettings?.title || "What is";
+  const titleHighlight = aboutSettings?.title_highlight || "FOMO";
+  const subtitle = aboutSettings?.subtitle || "A cutting-edge platform reshaping how users interact with the crypto world";
+  const description = aboutSettings?.description || "FOMO is a cutting-edge platform built to reshape the way users interact with the cryptoworld. Our goal is to create a single, comprehensive ecosystem that combines";
+  const socialEngagement = aboutSettings?.social_engagement || "social engagement";
+  const dataAnalytics = aboutSettings?.data_analytics || "data analytics";
+  const seamlessAccess = aboutSettings?.seamless_access || "seamless access";
+  const descriptionEnd = aboutSettings?.description_end || "to crypto projects, NFTs, funds, and more.";
+  const features = aboutSettings?.features || [
+    { icon: "diamond", title: "Community-Driven", description: "Every user influences the project through voting and social engagement.", color: "emerald" },
+    { icon: "clock", title: "24/7 Support", description: "Our support never stops. We are here offering guidance every step.", color: "teal" },
+    { icon: "lightning", title: "Fast & Efficient", description: "Launch your project quickly with FOMO tools and support.", color: "cyan" },
+    { icon: "shield", title: "Secure & Reliable", description: "All transactions via secure smart contracts for max protection.", color: "violet" },
+  ];
+  const whitepaperButtonText = aboutSettings?.whitepaper_button_text || "Whitepaper";
   
   const content = {
     en: {
