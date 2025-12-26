@@ -4234,38 +4234,29 @@ const EvolutionAdminContent = ({ onUpdate }) => {
 
   const BadgeForm = ({ badge, onSave, onCancel }) => {
     const [form, setForm] = useState(badge || {
-      name_ru: '', name_en: '', xp_requirement: 1000, 
-      condition_ru: '', condition_en: '', description_ru: '', description_en: '',
+      name_en: '', xp_requirement: 1000, 
+      condition_en: '', description_en: '',
       animation_type: 'pioneer', gradient_from: '#3b82f6', gradient_to: '#06b6d4', order: badges.length
     });
 
     return (
       <div style={{ background: '#f8fafc', borderRadius: '12px', padding: '24px', marginBottom: '20px' }}>
-        <h4 style={{ margin: '0 0 20px 0', color: '#1f2937' }}>{badge?.id ? 'Редактировать бейдж' : 'Новый бейдж'}</h4>
+        <h4 style={{ margin: '0 0 20px 0', color: '#1f2937' }}>{badge?.id ? 'Edit Badge' : 'New Badge'}</h4>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           <div className="form-group">
-            <label>🇷🇺 Название бейджа (RU)</label>
-            <input type="text" value={form.name_ru || ''} onChange={e => setForm({...form, name_ru: e.target.value})} placeholder="XP Пионер" />
-          </div>
-          <div className="form-group">
-            <label>🇬🇧 Название бейджа (EN)</label>
+            <label>Badge Name</label>
             <input type="text" value={form.name_en || ''} onChange={e => setForm({...form, name_en: e.target.value})} placeholder="XP Pioneer" />
           </div>
           <div className="form-group">
-            <label>Требуемые XP</label>
+            <label>XP Requirement</label>
             <input type="number" value={form.xp_requirement} onChange={e => setForm({...form, xp_requirement: parseInt(e.target.value) || 0})} />
           </div>
           <div className="form-group">
-            <label>Порядок</label>
+            <label>Order</label>
             <input type="number" value={form.order} onChange={e => setForm({...form, order: parseInt(e.target.value) || 0})} />
           </div>
           <div className="form-group">
-            <label>🇷🇺 Условие получения (RU)</label>
-            <textarea value={form.condition_ru || ''} onChange={e => setForm({...form, condition_ru: e.target.value})} rows={2} placeholder="Условие получения бейджа на русском..." />
-          </div>
-          <div className="form-group">
-            <label>🇬🇧 Условие получения (EN)</label>
-            <textarea value={form.condition_en || ''} onChange={e => setForm({...form, condition_en: e.target.value})} rows={2} placeholder="Badge condition in English..." />
+            <label>Animation</label>
           </div>
           <div className="form-group">
             <label>🇷🇺 Описание (RU)</label>
