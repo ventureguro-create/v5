@@ -3312,186 +3312,84 @@ const HeroAdminContent = () => {
         
         {/* Badge */}
         <div style={{ marginBottom: '20px', padding: '16px', background: '#f9fafb', borderRadius: '12px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '12px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
             Badge Text (version label)
           </label>
-          <div style={{ display: 'grid', gap: '12px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇷🇺 Russian
-              </label>
-              <input
-                type="text"
-                value={settings.badge_ru}
-                onChange={(e) => setSettings(prev => ({ ...prev, badge_ru: e.target.value }))}
-                placeholder="Сейчас в Beta v1.1"
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px'
-                }}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇬🇧 English
-              </label>
-              <input
-                type="text"
-                value={settings.badge_en}
-                onChange={(e) => setSettings(prev => ({ ...prev, badge_en: e.target.value }))}
-                placeholder="Now in Beta v1.1"
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px'
-                }}
-              />
-            </div>
-          </div>
+          <input
+            type="text"
+            value={settings.badge}
+            onChange={(e) => setSettings(prev => ({ ...prev, badge: e.target.value }))}
+            placeholder="Now in Beta v1.1"
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #d1d5db',
+              borderRadius: '8px',
+              fontSize: '14px'
+            }}
+          />
         </div>
 
         {/* Title Line 1 */}
         <div style={{ marginBottom: '20px', padding: '16px', background: '#f9fafb', borderRadius: '12px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '12px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
             Title Line 1
           </label>
-          <div style={{ display: 'grid', gap: '12px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇷🇺 Russian
-              </label>
-              <input
-                type="text"
-                value={settings.title_line1_ru}
-                onChange={(e) => setSettings(prev => ({ ...prev, title_line1_ru: e.target.value }))}
-                placeholder="Будущее"
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px'
-                }}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇬🇧 English
-              </label>
-              <input
-                type="text"
-                value={settings.title_line1_en}
-                onChange={(e) => setSettings(prev => ({ ...prev, title_line1_en: e.target.value }))}
-                placeholder="The Future of"
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px'
-                }}
-              />
-            </div>
-          </div>
+          <input
+            type="text"
+            value={settings.title_line1}
+            onChange={(e) => setSettings(prev => ({ ...prev, title_line1: e.target.value }))}
+            placeholder="The Future of"
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #d1d5db',
+              borderRadius: '8px',
+              fontSize: '14px'
+            }}
+          />
         </div>
 
         {/* Title Line 2 (highlighted) */}
         <div style={{ marginBottom: '20px', padding: '16px', background: '#f9fafb', borderRadius: '12px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '12px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
             Title Line 2 (highlighted text)
           </label>
-          <div style={{ display: 'grid', gap: '12px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇷🇺 Russian
-              </label>
-              <input
-                type="text"
-                value={settings.title_line2_ru}
-                onChange={(e) => setSettings(prev => ({ ...prev, title_line2_ru: e.target.value }))}
-                placeholder="Крипто Аналитики"
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px'
-                }}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇬🇧 English
-              </label>
-              <input
-                type="text"
-                value={settings.title_line2_en}
-                onChange={(e) => setSettings(prev => ({ ...prev, title_line2_en: e.target.value }))}
-                placeholder="Crypto Analytics"
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px'
-                }}
-              />
-            </div>
-          </div>
+          <input
+            type="text"
+            value={settings.title_line2}
+            onChange={(e) => setSettings(prev => ({ ...prev, title_line2: e.target.value }))}
+            placeholder="Crypto Analytics"
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #d1d5db',
+              borderRadius: '8px',
+              fontSize: '14px'
+            }}
+          />
         </div>
 
         {/* Subtitle/Description */}
         <div style={{ marginBottom: '20px', padding: '16px', background: '#f9fafb', borderRadius: '12px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '12px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
             Subtitle / Description
           </label>
-          <div style={{ display: 'grid', gap: '12px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇷🇺 Russian
-              </label>
-              <textarea
-                value={settings.subtitle_ru}
-                onChange={(e) => setSettings(prev => ({ ...prev, subtitle_ru: e.target.value }))}
-                placeholder="Откройте для себя комплексную платформу..."
-                rows={3}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px',
-                  fontFamily: 'inherit',
-                  resize: 'vertical'
-                }}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
-                🇬🇧 English
-              </label>
-              <textarea
-                value={settings.subtitle_en}
-                onChange={(e) => setSettings(prev => ({ ...prev, subtitle_en: e.target.value }))}
-                placeholder="Discover a comprehensive platform..."
-                rows={3}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px',
-                  fontSize: '14px',
-                  fontFamily: 'inherit',
-                  resize: 'vertical'
-                }}
-              />
-            </div>
-          </div>
+          <textarea
+            value={settings.subtitle}
+            onChange={(e) => setSettings(prev => ({ ...prev, subtitle: e.target.value }))}
+            placeholder="Discover a comprehensive platform..."
+            rows={3}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #d1d5db',
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontFamily: 'inherit',
+              resize: 'vertical'
+            }}
+          />
         </div>
       </div>
 
