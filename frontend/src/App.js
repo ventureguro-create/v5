@@ -4170,29 +4170,21 @@ const EvolutionAdminContent = ({ onUpdate }) => {
 
   const LevelForm = ({ level, onSave, onCancel }) => {
     const [form, setForm] = useState(level || {
-      rank_ru: '', rank_en: '', fomo_score_min: 0, fomo_score_max: 100, 
-      next_level_ru: '', next_level_en: '', description_ru: '', description_en: '',
+      rank_en: '', fomo_score_min: 0, fomo_score_max: 100, 
+      next_level_en: '', description_en: '',
       animation_type: 'stellar', gradient_from: '#64748b', gradient_to: '#475569', order: levels.length
     });
 
     return (
       <div style={{ background: '#f8fafc', borderRadius: '12px', padding: '24px', marginBottom: '20px' }}>
-        <h4 style={{ margin: '0 0 20px 0', color: '#1f2937' }}>{level?.id ? 'Редактировать уровень' : 'Новый уровень'}</h4>
+        <h4 style={{ margin: '0 0 20px 0', color: '#1f2937' }}>{level?.id ? 'Edit Level' : 'New Level'}</h4>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           <div className="form-group">
-            <label>🇷🇺 Название уровня (RU)</label>
-            <input type="text" value={form.rank_ru || ''} onChange={e => setForm({...form, rank_ru: e.target.value})} placeholder="Звёздное Пробуждение" />
-          </div>
-          <div className="form-group">
-            <label>🇬🇧 Название уровня (EN)</label>
+            <label>Level Name</label>
             <input type="text" value={form.rank_en || ''} onChange={e => setForm({...form, rank_en: e.target.value})} placeholder="Stellar Awakening" />
           </div>
           <div className="form-group">
-            <label>🇷🇺 Следующий уровень (RU)</label>
-            <input type="text" value={form.next_level_ru || ''} onChange={e => setForm({...form, next_level_ru: e.target.value})} placeholder="Космический Исследователь (200)" />
-          </div>
-          <div className="form-group">
-            <label>🇬🇧 Следующий уровень (EN)</label>
+            <label>Next Level</label>
             <input type="text" value={form.next_level_en || ''} onChange={e => setForm({...form, next_level_en: e.target.value})} placeholder="Cosmic Explorer (200)" />
           </div>
           <div className="form-group">
