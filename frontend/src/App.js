@@ -4301,7 +4301,7 @@ const EvolutionAdminContent = ({ onUpdate }) => {
       
       <div style={{ marginBottom: '24px' }}>
         <h3 style={{ margin: '0 0 8px 0' }}>🚀 User Evolution</h3>
-        <p style={{ fontSize: '13px', color: '#6b7280', margin: 0 }}>Управление уровнями FOMO Score и бейджами</p>
+        <p style={{ fontSize: '13px', color: '#6b7280', margin: 0 }}>Manage FOMO Score levels and badges</p>
       </div>
 
       {/* Sub-tabs */}
