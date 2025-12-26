@@ -4273,14 +4273,14 @@ const EvolutionAdminContent = ({ onUpdate }) => {
             </select>
           </div>
           <div className="form-group">
-            <label>Цвет градиента (от)</label>
+            <label>Gradient Color (from)</label>
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
               <input type="color" value={form.gradient_from} onChange={e => setForm({...form, gradient_from: e.target.value})} style={{ width: '50px', height: '36px', border: 'none', borderRadius: '4px' }} />
               <input type="text" value={form.gradient_from} onChange={e => setForm({...form, gradient_from: e.target.value})} style={{ flex: 1 }} />
             </div>
           </div>
           <div className="form-group">
-            <label>Цвет градиента (до)</label>
+            <label>Gradient Color (to)</label>
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
               <input type="color" value={form.gradient_to} onChange={e => setForm({...form, gradient_to: e.target.value})} style={{ width: '50px', height: '36px', border: 'none', borderRadius: '4px' }} />
               <input type="text" value={form.gradient_to} onChange={e => setForm({...form, gradient_to: e.target.value})} style={{ flex: 1 }} />
