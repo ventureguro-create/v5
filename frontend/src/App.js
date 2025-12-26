@@ -4288,8 +4288,8 @@ const EvolutionAdminContent = ({ onUpdate }) => {
           </div>
         </div>
         <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
-          <button onClick={() => onSave(form)} className="btn-primary" disabled={saving}>{saving ? 'Сохранение...' : 'Сохранить'}</button>
-          <button onClick={onCancel} className="btn-secondary">Отмена</button>
+          <button onClick={() => onSave(form)} className="btn-primary" disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>
+          <button onClick={onCancel} className="btn-secondary">Cancel</button>
         </div>
       </div>
     );
