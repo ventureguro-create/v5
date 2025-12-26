@@ -504,7 +504,7 @@ const ProjectDrawer = ({ cards }) => {
   if (!cards || cards.length === 0) {
     return (
       <div className="drawer-empty">
-        <p className="text-gray-500">Проекты скоро появятся</p>
+        <p className="text-gray-500">Projects coming soon</p>
       </div>
     );
   }
