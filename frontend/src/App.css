@@ -2784,6 +2784,10 @@ html { scroll-behavior: smooth; }
   padding: 32px;
 }
 
+.team-card.team-card-small .team-card-back {
+  padding: 20px;
+}
+
 .team-card-back-content {
   text-align: center;
   color: white;
