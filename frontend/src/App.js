@@ -4195,33 +4195,29 @@ const EvolutionAdminContent = ({ onUpdate }) => {
             <label>FOMO Score Max</label>
             <input type="number" value={form.fomo_score_max} onChange={e => setForm({...form, fomo_score_max: parseInt(e.target.value) || 0})} />
           </div>
-          <div className="form-group">
-            <label>🇷🇺 Описание (RU)</label>
-            <textarea value={form.description_ru || ''} onChange={e => setForm({...form, description_ru: e.target.value})} rows={2} placeholder="Описание уровня на русском..." />
-          </div>
-          <div className="form-group">
-            <label>🇬🇧 Описание (EN)</label>
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Description</label>
             <textarea value={form.description_en || ''} onChange={e => setForm({...form, description_en: e.target.value})} rows={2} placeholder="Level description in English..." />
           </div>
           <div className="form-group">
-            <label>Анимация</label>
+            <label>Animation</label>
             <select value={form.animation_type} onChange={e => setForm({...form, animation_type: e.target.value})} style={{ padding: '10px', borderRadius: '8px', border: '1px solid #d1d5db', width: '100%' }}>
               {ANIMATION_TYPES_LEVELS.map(a => <option key={a.value} value={a.value}>{a.label}</option>)}
             </select>
           </div>
           <div className="form-group">
-            <label>Порядок</label>
+            <label>Order</label>
             <input type="number" value={form.order} onChange={e => setForm({...form, order: parseInt(e.target.value) || 0})} />
           </div>
           <div className="form-group">
-            <label>Цвет градиента (от)</label>
+            <label>Gradient Color (from)</label>
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
               <input type="color" value={form.gradient_from} onChange={e => setForm({...form, gradient_from: e.target.value})} style={{ width: '50px', height: '36px', border: 'none', borderRadius: '4px' }} />
               <input type="text" value={form.gradient_from} onChange={e => setForm({...form, gradient_from: e.target.value})} style={{ flex: 1 }} />
             </div>
           </div>
           <div className="form-group">
-            <label>Цвет градиента (до)</label>
+            <label>Gradient Color (to)</label>
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
               <input type="color" value={form.gradient_to} onChange={e => setForm({...form, gradient_to: e.target.value})} style={{ width: '50px', height: '36px', border: 'none', borderRadius: '4px' }} />
               <input type="text" value={form.gradient_to} onChange={e => setForm({...form, gradient_to: e.target.value})} style={{ flex: 1 }} />
@@ -4229,8 +4225,8 @@ const EvolutionAdminContent = ({ onUpdate }) => {
           </div>
         </div>
         <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
-          <button onClick={() => onSave(form)} className="btn-primary" disabled={saving}>{saving ? 'Сохранение...' : 'Сохранить'}</button>
-          <button onClick={onCancel} className="btn-secondary">Отмена</button>
+          <button onClick={() => onSave(form)} className="btn-primary" disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>
+          <button onClick={onCancel} className="btn-secondary">Cancel</button>
         </div>
       </div>
     );
