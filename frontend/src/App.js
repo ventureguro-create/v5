@@ -5690,8 +5690,13 @@ const PlatformOverview = ({ platformSettings }) => {
   };
 
   // Map module names to icons
-  const getServiceIcon = (moduleName) => {
-    const name = (moduleName || '').toLowerCase();
+  const getServiceIcon = (iconType) => {
+    // Use icon field directly if provided
+    if (iconType && ServiceIcons[iconType]) {
+      return ServiceIcons[iconType];
+    }
+    // Fallback to name-based detection for backward compatibility
+    const name = (iconType || '').toLowerCase();
     if (name.includes('дашборд') || name.includes('dashboard')) return ServiceIcons.dashboard;
     if (name.includes('otc') || name.includes('маркет')) return ServiceIcons.otc;
     if (name.includes('p2p') || name.includes('обмен')) return ServiceIcons.p2p;
