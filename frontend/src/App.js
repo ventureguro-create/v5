@@ -1951,13 +1951,31 @@ const PlatformAdminContent = ({ platformSettings, onPlatformUpdate }) => {
         <div className="modules-admin-grid">
           {(settings.service_modules || []).map((module, index) => (
             <div key={index} className="module-admin-card">
-              <input
-                type="text"
-                className="module-icon-input"
-                value={module.icon || ''}
-                onChange={e => handleModuleChange(index, 'icon', e.target.value)}
-                placeholder="📊"
-              />
+              <div style={{ marginBottom: '8px' }}>
+                <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
+                  Icon Type
+                </label>
+                <select
+                  value={module.icon || 'dashboard'}
+                  onChange={e => handleModuleChange(index, 'icon', e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '6px',
+                    fontSize: '14px'
+                  }}
+                >
+                  <option value="dashboard">📊 Dashboard</option>
+                  <option value="otc">💱 OTC Market</option>
+                  <option value="p2p">🔄 P2P Exchange</option>
+                  <option value="predictions">🎯 Predictions</option>
+                  <option value="parsing">🔍 Parsing</option>
+                  <option value="sentiment">📈 Sentiment</option>
+                  <option value="earlyland">🚀 EarlyLand</option>
+                  <option value="nft">🖼️ NFT Strategy</option>
+                </select>
+              </div>
               <input
                 type="text"
                 value={module.name_en || module.name || ''}
