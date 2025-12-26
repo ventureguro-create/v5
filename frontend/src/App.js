@@ -5542,96 +5542,68 @@ const Navigation = () => {
 };
 
 // Interactive Chart Component
-// ==================== COMPACT DASHBOARD MOCKUP ====================
+// ==================== INTERACTIVE CHART ====================
 const InteractiveChart = () => {
-  // Market data based on FOMO.cx
-  const marketData = {
-    totalMarketCap: '$2.98T',
-    marketCapChange: '+1.15%',
-    btcDominance: '59.29%',
-    ethDominance: '12.01%',
-    volume24h: '$86.0B',
-    volumeChange: '+31.55%',
-    fearGreed: 27,
-  };
+  const [data, setData] = useState([40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88]);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(true);
 
-  // Equity chart data
-  const equityData = [35, 42, 38, 55, 48, 65, 58, 72, 68, 85, 78, 92, 88, 95, 90];
+  useEffect(() => {
+    if (!isAnimating) return;
+    const interval = setInterval(() => {
+      setData(prev => prev.map(v => Math.max(20, Math.min(100, v + (Math.random() - 0.5) * 15))));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [isAnimating]);
 
   return (
-    <div className="compact-dashboard">
-      {/* Header */}
-      <div className="dash-header">
-        <span className="dash-title">Market Overview</span>
-        <span className="dash-live">Live</span>
-      </div>
-
-      {/* Main Value */}
-      <div className="dash-main-value">
-        <span className="value">{marketData.totalMarketCap}</span>
-        <span className="change positive">{marketData.marketCapChange}</span>
-      </div>
-
-      {/* Mini Chart */}
-      <div className="dash-chart">
-        <svg viewBox="0 0 200 50" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#10b981" stopOpacity="0.05" />
-            </linearGradient>
-          </defs>
-          <path
-            d={`M0,${50 - equityData[0] * 0.5} ${equityData.map((v, i) => `L${(i / (equityData.length - 1)) * 200},${50 - v * 0.5}`).join(' ')} L200,50 L0,50 Z`}
-            fill="url(#chartGrad)"
-          />
-          <path
-            d={`M0,${50 - equityData[0] * 0.5} ${equityData.map((v, i) => `L${(i / (equityData.length - 1)) * 200},${50 - v * 0.5}`).join(' ')}`}
-            fill="none"
-            stroke="#10b981"
-            strokeWidth="2"
-          />
-        </svg>
-      </div>
-
-      {/* Stats Row */}
-      <div className="dash-stats-row">
-        <div className="dash-stat">
-          <span className="label">BTC Dom</span>
-          <span className="val">{marketData.btcDominance}</span>
-        </div>
-        <div className="dash-stat">
-          <span className="label">ETH Dom</span>
-          <span className="val">{marketData.ethDominance}</span>
-        </div>
-        <div className="dash-stat">
-          <span className="label">24h Vol</span>
-          <span className="val">{marketData.volume24h}</span>
+    <div className="chart-container">
+      <div className="chart-header">
+        <span className="text-gray-900 font-semibold text-lg">Market Overview</span>
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={() => setIsAnimating(!isAnimating)} 
+            className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${isAnimating ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-100 text-gray-500'}`}
+          >
+            {isAnimating ? 'Live' : 'Paused'}
+          </button>
         </div>
       </div>
-
-      {/* Crypto Prices */}
-      <div className="dash-crypto-row">
-        <div className="crypto-item">
-          <div className="crypto-icon btc">₿</div>
-          <div className="crypto-data">
-            <span className="price">$88,648</span>
-            <span className="change positive">+1.34%</span>
+      <div className="chart-area">
+        {data.map((h, i) => (
+          <div 
+            key={i} 
+            className="chart-bar-container"
+            onMouseEnter={() => setHoveredIndex(i)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <div 
+              className={`chart-bar ${hoveredIndex === i ? 'hovered' : ''}`}
+              style={{ height: `${h}%` }}
+            />
+            {hoveredIndex === i && (
+              <div className="chart-tooltip">
+                ${(h * 1000).toFixed(0)}
+              </div>
+            )}
           </div>
+        ))}
+      </div>
+      <div className="chart-stats">
+        <div className="stat-box">
+          <span className="text-gray-500 text-xs">BTC</span>
+          <span className="text-gray-900 font-bold">$87,514</span>
+          <span className="stat-change positive">+2.4%</span>
         </div>
-        <div className="crypto-item">
-          <div className="crypto-icon eth">Ξ</div>
-          <div className="crypto-data">
-            <span className="price">$2,973</span>
-            <span className="change positive">+1.68%</span>
-          </div>
+        <div className="stat-box">
+          <span className="text-gray-500 text-xs">ETH</span>
+          <span className="text-gray-900 font-bold">$2,961</span>
+          <span className="stat-change positive">+1.8%</span>
         </div>
-        <div className="crypto-item">
-          <div className="crypto-icon sol">◎</div>
-          <div className="crypto-data">
-            <span className="price">$123.93</span>
-            <span className="change positive">+1.64%</span>
-          </div>
+        <div className="stat-box">
+          <span className="text-gray-500 text-xs">SOL</span>
+          <span className="text-gray-900 font-bold">$123.91</span>
+          <span className="stat-change negative">-0.5%</span>
         </div>
       </div>
     </div>
