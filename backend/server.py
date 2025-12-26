@@ -488,6 +488,18 @@ class HeroSettings(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
     id: str = "hero_settings"
+    # Badge text
+    badge_ru: str = "Сейчас в Beta v1.1"
+    badge_en: str = "Now in Beta v1.1"
+    # Title
+    title_line1_ru: str = "Будущее"
+    title_line1_en: str = "The Future of"
+    title_line2_ru: str = "Крипто Аналитики"
+    title_line2_en: str = "Crypto Analytics"
+    # Subtitle/Description
+    subtitle_ru: str = "Откройте для себя комплексную платформу, объединяющую социальное взаимодействие, аналитику данных и доступ к крипто-проектам, NFT и многому другому."
+    subtitle_en: str = "Discover a comprehensive platform combining social engagement, data analytics, and seamless access to crypto projects, NFTs, and more."
+    # Stats
     stats: List[HeroStat] = [
         HeroStat(value="10K+", label_ru="Активных пользователей", label_en="Active Users"),
         HeroStat(value="$50M+", label_ru="Объём торгов", label_en="Trading Volume"),
@@ -497,6 +509,14 @@ class HeroSettings(BaseModel):
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class HeroSettingsUpdate(BaseModel):
+    badge_ru: Optional[str] = None
+    badge_en: Optional[str] = None
+    title_line1_ru: Optional[str] = None
+    title_line1_en: Optional[str] = None
+    title_line2_ru: Optional[str] = None
+    title_line2_en: Optional[str] = None
+    subtitle_ru: Optional[str] = None
+    subtitle_en: Optional[str] = None
     stats: Optional[List[HeroStat]] = None
     nft_settings: Optional[NFTSettings] = None
 
