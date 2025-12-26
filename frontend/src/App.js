@@ -4109,12 +4109,12 @@ const EvolutionAdminContent = ({ onUpdate }) => {
       } else {
         await axios.post(`${API}/evolution-levels`, level);
       }
-      setMessage('✅ Уровень сохранён!');
+      setMessage('✅ Level saved!');
       setEditingLevel(null);
       fetchData();
       if (onUpdate) onUpdate();
     } catch (err) {
-      setMessage('❌ Ошибка сохранения');
+      setMessage('❌ Save error');
     } finally {
       setSaving(false);
       setTimeout(() => setMessage(''), 3000);
@@ -4122,14 +4122,14 @@ const EvolutionAdminContent = ({ onUpdate }) => {
   };
 
   const deleteLevel = async (id) => {
-    if (!window.confirm('Удалить этот уровень?')) return;
+    if (!window.confirm('Delete this level?')) return;
     try {
       await axios.delete(`${API}/evolution-levels/${id}`);
-      setMessage('✅ Уровень удалён');
+      setMessage('✅ Level deleted');
       fetchData();
       if (onUpdate) onUpdate();
     } catch (err) {
-      setMessage('❌ Ошибка удаления');
+      setMessage('❌ Delete error');
     }
     setTimeout(() => setMessage(''), 3000);
   };
@@ -4143,12 +4143,12 @@ const EvolutionAdminContent = ({ onUpdate }) => {
       } else {
         await axios.post(`${API}/evolution-badges`, badge);
       }
-      setMessage('✅ Бейдж сохранён!');
+      setMessage('✅ Badge saved!');
       setEditingBadge(null);
       fetchData();
       if (onUpdate) onUpdate();
     } catch (err) {
-      setMessage('❌ Ошибка сохранения');
+      setMessage('❌ Save error');
     } finally {
       setSaving(false);
       setTimeout(() => setMessage(''), 3000);
@@ -4156,14 +4156,14 @@ const EvolutionAdminContent = ({ onUpdate }) => {
   };
 
   const deleteBadge = async (id) => {
-    if (!window.confirm('Удалить этот бейдж?')) return;
+    if (!window.confirm('Delete this badge?')) return;
     try {
       await axios.delete(`${API}/evolution-badges/${id}`);
-      setMessage('✅ Бейдж удалён');
+      setMessage('✅ Badge deleted');
       fetchData();
       if (onUpdate) onUpdate();
     } catch (err) {
-      setMessage('❌ Ошибка удаления');
+      setMessage('❌ Delete error');
     }
     setTimeout(() => setMessage(''), 3000);
   };
