@@ -2404,8 +2404,7 @@ async def get_hero_buttons():
         default_buttons = [
             {
                 "id": str(uuid4()),
-                "label_ru": "Изучить платформу",
-                "label_en": "Explore Platform",
+                "label": "Explore Platform",
                 "url": "#platform",
                 "style": "primary",
                 "order": 1,
@@ -2415,9 +2414,8 @@ async def get_hero_buttons():
             },
             {
                 "id": str(uuid4()),
-                "label_ru": "Купить NFT",
-                "label_en": "Buy NFT",
-                "url": "#nft",
+                "label": "Buy NFT",
+                "url": "https://example.com/nft",
                 "style": "secondary",
                 "order": 2,
                 "is_active": True,
