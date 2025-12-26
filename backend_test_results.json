@@ -1,68 +1,116 @@
 {
-  "total_tests": 10,
-  "passed_tests": 7,
-  "failed_tests": 3,
-  "success_rate": 70.0,
+  "total_tests": 18,
+  "passed_tests": 17,
+  "failed_tests": 1,
+  "success_rate": 94.44444444444444,
   "test_details": [
     {
       "test_name": "Basic API Connectivity",
       "success": true,
       "details": "",
-      "timestamp": "2025-12-26T12:55:08.454144"
+      "timestamp": "2025-12-26T12:56:06.122845"
     },
     {
       "test_name": "Admin Login",
       "success": true,
       "details": "",
-      "timestamp": "2025-12-26T12:55:08.504544"
+      "timestamp": "2025-12-26T12:56:06.158178"
     },
     {
       "test_name": "Admin Login (Wrong Password)",
       "success": true,
       "details": "",
-      "timestamp": "2025-12-26T12:55:08.539503"
+      "timestamp": "2025-12-26T12:56:06.191811"
     },
     {
       "test_name": "Get Drawer Cards (Empty)",
       "success": true,
       "details": "Found 0 cards",
-      "timestamp": "2025-12-26T12:55:08.577689"
+      "timestamp": "2025-12-26T12:56:06.272999"
     },
     {
       "test_name": "Create Drawer Card",
-      "success": false,
-      "details": "Status code: 422, Response: {\"detail\":[{\"type\":\"missing\",\"loc\":[\"body\",\"title_ru\"],\"msg\":\"Field required\",\"input\":{\"title\":\"Test Project\",\"link\":\"https://example.com\",\"image_url\":\"https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=800\",\"order\":0},\"url\":\"https://errors.pydantic.dev/2.12/v/missing\"},{\"type\":\"missing\",\"loc\":[\"body\",\"title_en\"],\"msg\":\"Field required\",\"input\":{\"title\":\"Test Project\",\"link\":\"https://example.com\",\"image_url\":\"https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=800\",\"order\":0},\"url\":\"https://errors.pydantic.dev/2.12/v/missing\"}]}",
-      "timestamp": "2025-12-26T12:55:08.616368"
+      "success": true,
+      "details": "Created card with ID: 9298ca80-6dfe-43d1-af94-b1f11ff98e7e",
+      "timestamp": "2025-12-26T12:56:06.324401"
+    },
+    {
+      "test_name": "Get Specific Drawer Card",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.362568"
+    },
+    {
+      "test_name": "Update Drawer Card",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.398810"
+    },
+    {
+      "test_name": "Delete Drawer Card",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.439123"
     },
     {
       "test_name": "Get Team Members (Empty)",
       "success": true,
       "details": "Found 17 members",
-      "timestamp": "2025-12-26T12:55:08.655261"
+      "timestamp": "2025-12-26T12:56:06.474676"
     },
     {
       "test_name": "Create Team Member",
-      "success": false,
-      "details": "Status code: 422, Response: {\"detail\":[{\"type\":\"missing\",\"loc\":[\"body\",\"name_en\"],\"msg\":\"Field required\",\"input\":{\"name\":\"Test Member\",\"position\":\"Test Position\",\"bio\":\"Test bio for team member\",\"image_url\":\"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400\",\"social_links\":{\"twitter\":\"https://twitter.com/test\",\"linkedin\":\"https://linkedin.com/in/test\"},\"displayed_socials\":[\"twitter\",\"linkedin\"],\"order\":0},\"url\":\"https://errors.pydantic.dev/2.12/v/missing\"},{\"type\":\"missing\",\"loc\":[\"body\",\"position_en\"],\"msg\":\"Field required\",\"input\":{\"name\":\"Test Member\",\"position\":\"Test Position\",\"bio\":\"Test bio for team member\",\"image_url\":\"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400\",\"social_links\":{\"twitter\":\"https://twitter.com/test\",\"linkedin\":\"https://linkedin.com/in/test\"},\"displayed_socials\":[\"twitter\",\"linkedin\"],\"order\":0},\"url\":\"https://errors.pydantic.dev/2.12/v/missing\"},{\"type\":\"missing\",\"loc\":[\"body\",\"bio_en\"],\"msg\":\"Field required\",\"input\":{\"name\":\"Test Member\",\"position\":\"Test Position\",\"bio\":\"Test bio for team member\",\"image_url\":\"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400\",\"social_links\":{\"twitter\":\"https://twitter.com/test\",\"linkedin\":\"https://linkedin.com/in/test\"},\"displayed_socials\":[\"twitter\",\"linkedin\"],\"order\":0},\"url\":\"https://errors.pydantic.dev/2.12/v/missing\"}]}",
-      "timestamp": "2025-12-26T12:55:08.688878"
+      "success": true,
+      "details": "Created member with ID: 5659cfc2-f0ff-4e57-b869-4b32b7ecb183",
+      "timestamp": "2025-12-26T12:56:06.513240"
+    },
+    {
+      "test_name": "Get Specific Team Member",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.548312"
+    },
+    {
+      "test_name": "Update Team Member",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.626166"
+    },
+    {
+      "test_name": "Delete Team Member",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.665236"
     },
     {
       "test_name": "Image Upload",
       "success": false,
       "details": "PIL not available, skipping image upload test",
-      "timestamp": "2025-12-26T12:55:08.689782"
+      "timestamp": "2025-12-26T12:56:06.665934"
+    },
+    {
+      "test_name": "Get About Settings",
+      "success": true,
+      "details": "Found settings with 4 features",
+      "timestamp": "2025-12-26T12:56:06.705654"
+    },
+    {
+      "test_name": "Update About Settings",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-26T12:56:06.737137"
     },
     {
       "test_name": "Create Status Check",
       "success": true,
       "details": "",
-      "timestamp": "2025-12-26T12:55:08.739509"
+      "timestamp": "2025-12-26T12:56:06.809911"
     },
     {
       "test_name": "Get Status Checks",
       "success": true,
-      "details": "Found 1 status checks",
-      "timestamp": "2025-12-26T12:55:08.772816"
+      "details": "Found 2 status checks",
+      "timestamp": "2025-12-26T12:56:06.845837"
     }
   ]
 }
