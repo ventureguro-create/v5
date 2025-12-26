@@ -4258,12 +4258,12 @@ const EvolutionAdminContent = ({ onUpdate }) => {
           <div className="form-group">
             <label>Animation</label>
           </div>
-          <div className="form-group">
-            <label>🇷🇺 Описание (RU)</label>
-            <textarea value={form.description_ru || ''} onChange={e => setForm({...form, description_ru: e.target.value})} rows={2} placeholder="Описание бейджа на русском..." />
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Unlock Condition</label>
+            <textarea value={form.condition_en || ''} onChange={e => setForm({...form, condition_en: e.target.value})} rows={2} placeholder="Badge unlock condition in English..." />
           </div>
-          <div className="form-group">
-            <label>🇬🇧 Описание (EN)</label>
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Description</label>
             <textarea value={form.description_en || ''} onChange={e => setForm({...form, description_en: e.target.value})} rows={2} placeholder="Badge description in English..." />
           </div>
           <div className="form-group">
