@@ -609,6 +609,30 @@ const UnifiedAdminPanel = ({ isOpen, onClose, cards, team, platformSettings, roa
   if (isFullPage) {
     return (
       <div className="admin-panel-fullpage" data-testid="unified-admin-panel">
+        {/* Logo Header */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '12px', 
+          padding: '16px 24px',
+          borderBottom: '1px solid #e5e7eb',
+          background: 'white'
+        }}>
+          <img 
+            src="/logo.svg" 
+            alt="FOMO Logo" 
+            style={{ height: '36px', width: 'auto' }}
+          />
+          <h1 style={{ 
+            margin: 0, 
+            fontSize: '24px', 
+            fontWeight: '700',
+            color: '#1f2937'
+          }}>
+            🎛️ FOMO Control Panel
+          </h1>
+        </div>
+        
         <div className="admin-tabs-horizontal">
           {[
             { id: 'analytics', icon: '📊', label: 'Analytics' },
