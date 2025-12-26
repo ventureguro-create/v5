@@ -2731,6 +2731,10 @@ html { scroll-behavior: smooth; }
   text-transform: uppercase;
 }
 
+.team-card.team-card-small .team-avatar-placeholder span {
+  font-size: 60px;
+}
+
 .team-card:hover .team-card-image img {
   transform: scale(1.05);
 }
