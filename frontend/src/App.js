@@ -1770,28 +1770,66 @@ const TeamAdminContent = ({ team, onTeamUpdate }) => {
         </div>
       </form>
 
+      {/* Core Team Section */}
       <div className="admin-cards-list">
-        <h3>Team ({team.length})</h3>
-        {team.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">No team members yet</p>
+        <h3>👥 Core Team ({team.filter(m => m.member_type === 'main').length})</h3>
+        {team.filter(m => m.member_type === 'main').length === 0 ? (
+          <p className="text-gray-500 text-center py-8">No core team members yet</p>
         ) : (
-          team.map((member, index) => (
+          team.filter(m => m.member_type === 'main').map((member, index) => (
             <div key={member.id} className="admin-card-item">
               <div className="card-preview">
-                <img src={member.image_url?.startsWith('/') ? `${BACKEND_URL}${member.image_url}` : member.image_url} alt={getLangField(member, 'name')} />
+                <img src={member.image_url?.startsWith('/') ? `${BACKEND_URL}${member.image_url}` : member.image_url} alt={member.name_en} />
               </div>
               <div className="card-info">
-                <strong>{member.name_en || member.name_ru || 'N/A'}</strong>
-                <span className="card-position">{member.position_en || member.position_ru || 'N/A'}</span>
+                <strong>{member.name_en || 'N/A'}</strong>
+                <span className="card-position">{member.position_en || 'N/A'}</span>
                 <span className="card-socials-count">
-                  {member.displayed_socials?.length || 0} socials
+                  {member.displayed_socials?.length || 0} socials • Core Team
                 </span>
               </div>
               <div className="card-actions">
                 <button onClick={() => moveMember(member.id, 'up')} disabled={index === 0}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
                 </button>
-                <button onClick={() => moveMember(member.id, 'down')} disabled={index === team.length - 1}>
+                <button onClick={() => moveMember(member.id, 'down')} disabled={index === team.filter(m => m.member_type === 'main').length - 1}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <button onClick={() => handleEdit(member)}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                </button>
+                <button onClick={() => handleDelete(member.id)} className="btn-danger">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Team Members Section */}
+      <div className="admin-cards-list" style={{ marginTop: '32px' }}>
+        <h3>👨‍💼 Team Members ({team.filter(m => m.member_type === 'team_member').length})</h3>
+        {team.filter(m => m.member_type === 'team_member').length === 0 ? (
+          <p className="text-gray-500 text-center py-8">No team members yet</p>
+        ) : (
+          team.filter(m => m.member_type === 'team_member').map((member, index) => (
+            <div key={member.id} className="admin-card-item">
+              <div className="card-preview">
+                <img src={member.image_url?.startsWith('/') ? `${BACKEND_URL}${member.image_url}` : member.image_url} alt={member.name_en} />
+              </div>
+              <div className="card-info">
+                <strong>{member.name_en || 'N/A'}</strong>
+                <span className="card-position">{member.position_en || 'N/A'}</span>
+                <span className="card-socials-count">
+                  {member.displayed_socials?.length || 0} socials • Team Member
+                </span>
+              </div>
+              <div className="card-actions">
+                <button onClick={() => moveMember(member.id, 'up')} disabled={index === 0}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
+                </button>
+                <button onClick={() => moveMember(member.id, 'down')} disabled={index === team.filter(m => m.member_type === 'team_member').length - 1}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
                 <button onClick={() => handleEdit(member)}>
