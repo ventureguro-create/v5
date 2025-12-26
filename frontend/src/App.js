@@ -6832,14 +6832,16 @@ const TeamSection = () => {
 
   return (
     <section id="team" className="py-16 bg-white overflow-hidden" data-testid="team-section">
-      {/* Main Team */}
-      {mainTeam.length > 0 && (
+      {/* Core Team */}
+      {team.length > 0 && (
         <>
           <div className="max-w-7xl mx-auto px-6 mb-12">
             <div className="text-center">
-              <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-gray-600 text-sm font-medium mb-4">{t('team.badge')}</span>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t('team.title')}</h2>
-              <p className="text-xl text-gray-600">{t('team.subtitle')}</p>
+              <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-gray-600 text-sm font-medium mb-4">Our Team</span>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Core Team</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Meet the professionals creating the future of crypto analytics
+              </p>
             </div>
           </div>
 
@@ -6856,7 +6858,7 @@ const TeamSection = () => {
 
             <div className="team-slider-scroll" ref={scrollContainerRef}>
               <div className="team-slider-track">
-                {mainTeam.map((member) => (
+                {team.map((member) => (
               <div 
                 key={member.id}
                 className={`team-card ${flippedCards.has(member.id) ? 'flipped' : ''}`}
