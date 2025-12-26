@@ -2661,6 +2661,12 @@ html { scroll-behavior: smooth; }
   cursor: pointer;
 }
 
+/* Smaller cards for team members */
+.team-card.team-card-small {
+  width: 240px;
+  height: 320px;
+}
+
 .team-card-inner {
   position: relative;
   width: 100%;
