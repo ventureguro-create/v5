@@ -3236,9 +3236,14 @@ const HeroAdminContent = () => {
   };
   
   const addHeroButton = () => {
+    if (heroButtons.length >= 3) {
+      setMessage('⚠️ Maximum 3 buttons allowed');
+      setTimeout(() => setMessage(''), 3000);
+      return;
+    }
     setHeroButtons(prev => [
       ...prev,
-      { label: 'New Button', url: '#', style: 'secondary', order: prev.length, is_active: true }
+      { label: 'New Button', url: 'https://example.com', style: 'secondary', order: prev.length, is_active: true }
     ]);
   };
   
