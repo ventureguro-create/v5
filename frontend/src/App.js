@@ -5900,7 +5900,7 @@ const PlatformOverview = ({ platformSettings }) => {
               <span className="modules-title">{language === 'ru' ? 'Наши сервисы' : 'Our Services'}</span>
               <div className="modules-grid">
                 {serviceModules.map((module, i) => {
-                  const IconComponent = getServiceIcon(module.name_ru || module.name || module.name_en);
+                  const IconComponent = getServiceIcon(module.icon || module.name_ru || module.name || module.name_en);
                   const moduleColor = {
                     emerald: '#10b981',
                     blue: '#3b82f6',
