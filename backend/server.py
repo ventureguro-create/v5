@@ -94,11 +94,8 @@ class TeamMember(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    name_ru: str
     name_en: str
-    position_ru: str
     position_en: str
-    bio_ru: str
     bio_en: str
     image_url: str
     social_links: Optional[SocialLinks] = None
@@ -109,11 +106,8 @@ class TeamMember(BaseModel):
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class TeamMemberCreate(BaseModel):
-    name_ru: str
     name_en: str
-    position_ru: str
     position_en: str
-    bio_ru: str
     bio_en: str
     image_url: str
     social_links: Optional[SocialLinks] = None
@@ -122,11 +116,8 @@ class TeamMemberCreate(BaseModel):
     order: int = 0
 
 class TeamMemberUpdate(BaseModel):
-    name_ru: Optional[str] = None
     name_en: Optional[str] = None
-    position_ru: Optional[str] = None
     position_en: Optional[str] = None
-    bio_ru: Optional[str] = None
     bio_en: Optional[str] = None
     image_url: Optional[str] = None
     social_links: Optional[SocialLinks] = None
