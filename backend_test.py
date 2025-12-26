@@ -206,11 +206,11 @@ class FOMOBackendTester:
                         self.log_test("Get Specific Team Member", False, f"Status code: {response.status_code}")
                     
                     # Test UPDATE member
-                    update_data = {"name": "Updated Test Member"}
+                    update_data = {"name_en": "Updated Test Member", "name_ru": "Updated Test Member"}
                     response = requests.put(f"{self.api_url}/team-members/{member_id}", json=update_data, timeout=10)
                     if response.status_code == 200:
                         updated_member = response.json()
-                        if updated_member.get("name") == "Updated Test Member":
+                        if updated_member.get("name_en") == "Updated Test Member":
                             self.log_test("Update Team Member", True)
                         else:
                             self.log_test("Update Team Member", False, "Name not updated")
