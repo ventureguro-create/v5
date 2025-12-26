@@ -2758,11 +2758,20 @@ html { scroll-behavior: smooth; }
   margin: 0 0 8px 0;
 }
 
+.team-card.team-card-small .team-member-name {
+  font-size: 18px;
+  margin: 0 0 6px 0;
+}
+
 .team-member-position {
   font-size: 16px;
   color: #10b981;
   font-weight: 600;
   margin: 0;
+}
+
+.team-card.team-card-small .team-member-position {
+  font-size: 14px;
 }
 
 /* Back Side */
