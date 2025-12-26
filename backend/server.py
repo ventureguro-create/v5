@@ -409,25 +409,17 @@ class FAQItem(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    question_ru: str
-    question_en: str
-    answer_ru: str
-    answer_en: str
+    question: str
+    answer: str
     order: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class FAQItemCreate(BaseModel):
-    question_ru: str
-    question_en: str
-    answer_ru: str
-    answer_en: str
+    question: str
+    answer: str
     order: int = 0
 
 class FAQItemUpdate(BaseModel):
-    question_ru: Optional[str] = None
-    question_en: Optional[str] = None
-    answer_ru: Optional[str] = None
-    answer_en: Optional[str] = None
     question: Optional[str] = None
     answer: Optional[str] = None
     order: Optional[int] = None
