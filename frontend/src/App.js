@@ -3417,55 +3417,119 @@ const HeroAdminContent = () => {
         </div>
       </div>
 
-      {/* Action Buttons Section */}
+      {/* Hero CTA Buttons Section */}
       <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#1f2937', marginBottom: '16px' }}>
-          🔗 Navigation Action Buttons (Crypto, Core, Utility)
+          🔘 Hero Call-to-Action Buttons
         </h3>
         <p style={{ fontSize: '13px', color: '#6b7280', marginBottom: '16px' }}>
-          Configure links for the action buttons in the header
+          Configure the main CTA buttons in Hero section (Explore Platform, Buy NFT, etc.)
         </p>
-        <div style={{ display: 'grid', gap: '16px' }}>
-          {['crypto', 'core', 'utility'].map((key) => (
-            <div key={key} style={{
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {heroButtons.map((button, index) => (
+            <div key={index} style={{
               padding: '16px',
               background: '#f9fafb',
               borderRadius: '12px',
-              display: 'grid',
-              gridTemplateColumns: '120px 1fr 2fr',
-              gap: '12px',
-              alignItems: 'center'
+              border: '1px solid #e5e7eb'
             }}>
-              <span style={{ fontWeight: '600', color: '#374151', textTransform: 'capitalize' }}>
-                {key === 'crypto' ? '💰' : key === 'core' ? '⚙️' : '🔧'} {key}
-              </span>
-              <input
-                type="text"
-                value={settings.action_buttons?.[key]?.label || key.charAt(0).toUpperCase() + key.slice(1)}
-                onChange={e => handleButtonChange(key, 'label', e.target.value)}
-                placeholder="Button Label"
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: '8px',
-                  border: '1px solid #d1d5db',
-                  fontSize: '14px'
-                }}
-              />
-              <input
-                type="url"
-                value={settings.action_buttons?.[key]?.url || `#${key}`}
-                onChange={e => handleButtonChange(key, 'url', e.target.value)}
-                placeholder="https://example.com or #section"
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: '8px',
-                  border: '1px solid #d1d5db',
-                  fontSize: '14px'
-                }}
-              />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                <span style={{ fontWeight: '600', color: '#374151' }}>Button #{index + 1}</span>
+                <button
+                  onClick={() => removeHeroButton(index)}
+                  style={{
+                    padding: '6px 12px',
+                    background: '#ef4444',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '12px'
+                  }}
+                >
+                  🗑️ Delete
+                </button>
+              </div>
+              
+              <div style={{ display: 'grid', gap: '12px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
+                    Button Label
+                  </label>
+                  <input
+                    type="text"
+                    value={button.label || ''}
+                    onChange={e => handleHeroButtonChange(index, 'label', e.target.value)}
+                    placeholder="Explore Platform"
+                    style={{
+                      width: '100%',
+                      padding: '10px 14px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '8px',
+                      fontSize: '14px'
+                    }}
+                  />
+                </div>
+                
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
+                    URL (use # for anchor links or full URL)
+                  </label>
+                  <input
+                    type="text"
+                    value={button.url || ''}
+                    onChange={e => handleHeroButtonChange(index, 'url', e.target.value)}
+                    placeholder="https://example.com or #section"
+                    style={{
+                      width: '100%',
+                      padding: '10px 14px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '8px',
+                      fontSize: '14px'
+                    }}
+                  />
+                </div>
+                
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
+                    Button Style
+                  </label>
+                  <select
+                    value={button.style || 'secondary'}
+                    onChange={e => handleHeroButtonChange(index, 'style', e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '10px 14px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '8px',
+                      fontSize: '14px'
+                    }}
+                  >
+                    <option value="primary">Primary (Dark)</option>
+                    <option value="secondary">Secondary (White)</option>
+                  </select>
+                </div>
+              </div>
             </div>
           ))}
         </div>
+        
+        <button
+          onClick={addHeroButton}
+          style={{
+            marginTop: '12px',
+            padding: '10px 20px',
+            background: '#f3f4f6',
+            border: '1px dashed #d1d5db',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '14px',
+            color: '#6b7280'
+          }}
+        >
+          ➕ Add Button
+        </button>
       </div>
 
       {/* Stats Section */}
