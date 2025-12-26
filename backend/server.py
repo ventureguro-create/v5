@@ -1281,6 +1281,51 @@ async def update_hero_settings(update_data: HeroSettingsUpdate):
     return updated
 
 
+
+# ==================== ABOUT SETTINGS API ====================
+
+@api_router.get("/about-settings")
+async def get_about_settings():
+    """Get About section settings"""
+    collection = db.about_settings
+    settings = await collection.find_one({"id": "about_settings"}, {"_id": 0})
+    
+    if not settings:
+        # Create default settings
+        default_settings = AboutSettings().model_dump()
+        await collection.insert_one(default_settings)
+        settings = default_settings
+    
+    return settings
+
+@api_router.put("/about-settings")
+async def update_about_settings(settings_update: AboutSettingsUpdate):
+    """Update About section settings"""
+    collection = db.about_settings
+    
+    # Remove None values
+    update_dict = {k: v for k, v in settings_update.model_dump().items() if v is not None}
+    update_dict['updated_at'] = datetime.now(timezone.utc).isoformat()
+    
+    # Check if settings exist
+    existing = await collection.find_one({"id": "about_settings"})
+    
+    if existing:
+        # Update existing
+        await collection.update_one(
+            {"id": "about_settings"},
+            {"$set": update_dict}
+        )
+    else:
+        # Create new with defaults and updates
+        new_settings = AboutSettings().model_dump()
+        new_settings.update(update_dict)
+        await collection.insert_one(new_settings)
+    
+    updated = await collection.find_one({"id": "about_settings"}, {"_id": 0})
+    return updated
+
+
 # ==================== ADMIN AUTH API ====================
 
 class AdminLogin(BaseModel):
