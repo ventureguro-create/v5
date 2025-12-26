@@ -2400,12 +2400,12 @@ class HeroButtonUpdate(BaseModel):
 async def get_hero_buttons():
     buttons = await db.hero_buttons.find({"is_active": True}, {"_id": 0}).sort("order", 1).to_list(100)
     if not buttons:
-        # Default hero buttons
+        # Default hero buttons (max 2)
         default_buttons = [
             {
                 "id": str(uuid4()),
                 "label": "Explore Platform",
-                "url": "#platform",
+                "url": "https://example.com/explore",
                 "style": "primary",
                 "order": 1,
                 "is_active": True,
