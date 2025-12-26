@@ -2800,6 +2800,11 @@ html { scroll-behavior: smooth; }
   color: white;
 }
 
+.team-card.team-card-small .team-member-name-back {
+  font-size: 18px;
+  margin: 0 0 6px 0;
+}
+
 .team-member-position-back {
   font-size: 14px;
   font-weight: 600;
@@ -2809,11 +2814,22 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.05em;
 }
 
+.team-card.team-card-small .team-member-position-back {
+  font-size: 12px;
+  margin: 0 0 12px 0;
+}
+
 .team-member-bio {
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 24px;
   color: rgba(255, 255, 255, 0.95);
+}
+
+.team-card.team-card-small .team-member-bio {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
 .team-social-links {
