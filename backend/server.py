@@ -2374,8 +2374,7 @@ class HeroButton(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid4()))
-    label_ru: str
-    label_en: str
+    label: str
     url: str
     style: str = "primary"  # "primary", "secondary", "outline"
     order: int = 0
@@ -2384,16 +2383,14 @@ class HeroButton(BaseModel):
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class HeroButtonCreate(BaseModel):
-    label_ru: str
-    label_en: str
+    label: str
     url: str
     style: str = "primary"
     order: int = 0
     is_active: bool = True
 
 class HeroButtonUpdate(BaseModel):
-    label_ru: Optional[str] = None
-    label_en: Optional[str] = None
+    label: Optional[str] = None
     url: Optional[str] = None
     style: Optional[str] = None
     order: Optional[int] = None
