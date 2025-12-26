@@ -1967,13 +1967,20 @@ const PlatformAdminContent = ({ platformSettings, onPlatformUpdate }) => {
                   }}
                 >
                   <option value="dashboard">📊 Dashboard</option>
+                  <option value="analytics">📈 Analytics</option>
                   <option value="otc">💱 OTC Market</option>
                   <option value="p2p">🔄 P2P Exchange</option>
                   <option value="predictions">🎯 Predictions</option>
                   <option value="parsing">🔍 Parsing</option>
-                  <option value="sentiment">📈 Sentiment</option>
-                  <option value="earlyland">🚀 EarlyLand</option>
+                  <option value="sentiment">📉 Sentiment Analysis</option>
+                  <option value="trading">💹 Trading</option>
+                  <option value="wallet">👛 Wallet</option>
+                  <option value="staking">💰 Staking</option>
+                  <option value="security">🔒 Security</option>
+                  <option value="defi">🌐 DeFi</option>
                   <option value="nft">🖼️ NFT Strategy</option>
+                  <option value="earlyland">🚀 EarlyLand</option>
+                  <option value="community">👥 Community</option>
                 </select>
               </div>
               <input
