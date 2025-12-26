@@ -3225,6 +3225,294 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
   );
 };
 
+// ==================== ABOUT ADMIN CONTENT ====================
+const AboutAdminContent = () => {
+  const [settings, setSettings] = useState({
+    badge: 'About Us',
+    title: 'What is',
+    title_highlight: 'FOMO',
+    subtitle: '',
+    description: '',
+    social_engagement: 'social engagement',
+    data_analytics: 'data analytics',
+    seamless_access: 'seamless access',
+    description_end: 'to crypto projects, NFTs, funds, and more.',
+    features: [],
+    whitepaper_button_text: 'Whitepaper'
+  });
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const response = await axios.get(`${API}/about-settings`);
+        if (response.data) {
+          setSettings(prev => ({
+            ...prev,
+            ...response.data
+          }));
+        }
+      } catch (err) {
+        console.error('Error fetching about settings:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const handleFeatureChange = (index, field, value) => {
+    setSettings(prev => {
+      const newFeatures = [...prev.features];
+      newFeatures[index] = { ...newFeatures[index], [field]: value };
+      return { ...prev, features: newFeatures };
+    });
+  };
+
+  const addFeature = () => {
+    setSettings(prev => ({
+      ...prev,
+      features: [...prev.features, { icon: 'star', title: 'New Feature', description: 'Feature description', color: 'emerald' }]
+    }));
+  };
+
+  const removeFeature = (index) => {
+    setSettings(prev => ({
+      ...prev,
+      features: prev.features.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    setMessage('');
+    try {
+      await axios.put(`${API}/about-settings`, settings);
+      setMessage('✅ Settings saved successfully!');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (err) {
+      setMessage('❌ Error saving settings');
+      console.error(err);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const iconOptions = ['diamond', 'clock', 'lightning', 'shield', 'star', 'heart', 'globe', 'chart'];
+  const colorOptions = ['emerald', 'teal', 'cyan', 'violet', 'blue', 'purple', 'orange', 'pink'];
+
+  if (loading) {
+    return <div style={{ padding: '40px', textAlign: 'center' }}>Loading...</div>;
+  }
+
+  return (
+    <div className="admin-content" style={{ padding: '24px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#1f2937' }}>📝 About Section Settings</h2>
+        {message && <span style={{ padding: '8px 16px', borderRadius: '8px', background: message.includes('✅') ? '#ecfdf5' : '#fef2f2', color: message.includes('✅') ? '#059669' : '#dc2626' }}>{message}</span>}
+      </div>
+
+      {/* Header Section */}
+      <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', marginBottom: '20px' }}>
+        <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#374151', marginBottom: '16px' }}>Section Header</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Badge Text</label>
+            <input
+              type="text"
+              value={settings.badge}
+              onChange={e => setSettings(prev => ({ ...prev, badge: e.target.value }))}
+              style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Title</label>
+            <input
+              type="text"
+              value={settings.title}
+              onChange={e => setSettings(prev => ({ ...prev, title: e.target.value }))}
+              style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Title Highlight</label>
+            <input
+              type="text"
+              value={settings.title_highlight}
+              onChange={e => setSettings(prev => ({ ...prev, title_highlight: e.target.value }))}
+              style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+            />
+          </div>
+        </div>
+        <div style={{ marginTop: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Subtitle</label>
+          <input
+            type="text"
+            value={settings.subtitle}
+            onChange={e => setSettings(prev => ({ ...prev, subtitle: e.target.value }))}
+            style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+          />
+        </div>
+      </div>
+
+      {/* Description Section */}
+      <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', marginBottom: '20px' }}>
+        <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#374151', marginBottom: '16px' }}>Description Content</h3>
+        <div style={{ marginBottom: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Main Description</label>
+          <textarea
+            value={settings.description}
+            onChange={e => setSettings(prev => ({ ...prev, description: e.target.value }))}
+            rows={3}
+            style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px', resize: 'vertical' }}
+          />
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Social Engagement (bold)</label>
+            <input
+              type="text"
+              value={settings.social_engagement}
+              onChange={e => setSettings(prev => ({ ...prev, social_engagement: e.target.value }))}
+              style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Data Analytics (bold)</label>
+            <input
+              type="text"
+              value={settings.data_analytics}
+              onChange={e => setSettings(prev => ({ ...prev, data_analytics: e.target.value }))}
+              style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Seamless Access (bold)</label>
+            <input
+              type="text"
+              value={settings.seamless_access}
+              onChange={e => setSettings(prev => ({ ...prev, seamless_access: e.target.value }))}
+              style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+            />
+          </div>
+        </div>
+        <div style={{ marginTop: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Description End</label>
+          <input
+            type="text"
+            value={settings.description_end}
+            onChange={e => setSettings(prev => ({ ...prev, description_end: e.target.value }))}
+            style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+          />
+        </div>
+        <div style={{ marginTop: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#6b7280', marginBottom: '6px' }}>Whitepaper Button Text</label>
+          <input
+            type="text"
+            value={settings.whitepaper_button_text}
+            onChange={e => setSettings(prev => ({ ...prev, whitepaper_button_text: e.target.value }))}
+            style={{ width: '100%', padding: '10px 12px', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '14px' }}
+          />
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#374151' }}>Features ({settings.features.length})</h3>
+          <button
+            onClick={addFeature}
+            style={{ padding: '8px 16px', background: '#10b981', color: 'white', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}
+          >
+            + Add Feature
+          </button>
+        </div>
+        <div style={{ display: 'grid', gap: '16px' }}>
+          {settings.features.map((feature, index) => (
+            <div key={index} style={{ background: 'white', padding: '16px', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                <span style={{ fontWeight: '600', color: '#374151' }}>Feature {index + 1}</span>
+                <button
+                  onClick={() => removeFeature(index)}
+                  style={{ padding: '4px 12px', background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: '6px', fontSize: '12px', cursor: 'pointer' }}
+                >
+                  🗑️ Remove
+                </button>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '12px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '500', color: '#6b7280', marginBottom: '4px' }}>Icon</label>
+                  <select
+                    value={feature.icon}
+                    onChange={e => handleFeatureChange(index, 'icon', e.target.value)}
+                    style={{ width: '100%', padding: '8px', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '14px' }}
+                  >
+                    {iconOptions.map(icon => (
+                      <option key={icon} value={icon}>{icon}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '500', color: '#6b7280', marginBottom: '4px' }}>Color</label>
+                  <select
+                    value={feature.color}
+                    onChange={e => handleFeatureChange(index, 'color', e.target.value)}
+                    style={{ width: '100%', padding: '8px', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '14px' }}
+                  >
+                    {colorOptions.map(color => (
+                      <option key={color} value={color}>{color}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '500', color: '#6b7280', marginBottom: '4px' }}>Title</label>
+                  <input
+                    type="text"
+                    value={feature.title}
+                    onChange={e => handleFeatureChange(index, 'title', e.target.value)}
+                    style={{ width: '100%', padding: '8px', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '14px' }}
+                  />
+                </div>
+                <div style={{ gridColumn: 'span 2' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '500', color: '#6b7280', marginBottom: '4px' }}>Description</label>
+                  <input
+                    type="text"
+                    value={feature.description}
+                    onChange={e => handleFeatureChange(index, 'description', e.target.value)}
+                    style={{ width: '100%', padding: '8px', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '14px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Save Button */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '24px' }}>
+        <button
+          onClick={handleSave}
+          disabled={saving}
+          style={{
+            padding: '12px 32px',
+            background: saving ? '#9ca3af' : '#10b981',
+            color: 'white',
+            border: 'none',
+            borderRadius: '10px',
+            fontSize: '16px',
+            fontWeight: '600',
+            cursor: saving ? 'not-allowed' : 'pointer'
+          }}
+        >
+          {saving ? '💾 Saving...' : '💾 Save All Settings'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
 // ==================== HERO ADMIN CONTENT ====================
 const HeroAdminContent = () => {
   const [settings, setSettings] = useState({
