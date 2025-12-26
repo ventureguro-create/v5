@@ -5446,7 +5446,7 @@ const HeroSection = ({ heroSettings }) => {
 
 // About Section
 const AboutSection = ({ whitepaperUrl }) => {
-  const { language } = useLanguage();
+  const t = useTranslation();
   
   const content = {
     en: {
