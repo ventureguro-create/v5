@@ -6857,7 +6857,7 @@ const TeamSection = () => {
                 {team.map((member) => (
               <div 
                 key={member.id}
-                className={`team-card ${flippedCards.has(member.id) ? 'flipped' : ''}`}
+                className={`team-card ${member.member_type === 'team_member' ? 'team-card-small' : ''} ${flippedCards.has(member.id) ? 'flipped' : ''}`}
                 onClick={() => toggleFlip(member.id)}
                 data-testid={`team-card-${member.id}`}
               >
