@@ -5686,6 +5686,84 @@ const PlatformOverview = ({ platformSettings }) => {
         </circle>
         <rect x="14" y="30" width="20" height="4" rx="1" fill={color} opacity="0.4" />
       </svg>
+    ),
+    analytics: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <rect x="8" y="28" width="6" height="14" rx="1" fill={color} opacity="0.6">
+          <animate attributeName="height" values="14;18;14" dur="1.5s" repeatCount="indefinite" />
+        </rect>
+        <rect x="18" y="20" width="6" height="22" rx="1" fill={color} opacity="0.7">
+          <animate attributeName="height" values="22;26;22" dur="1.8s" repeatCount="indefinite" />
+        </rect>
+        <rect x="28" y="12" width="6" height="30" rx="1" fill={color} opacity="0.8" />
+        <rect x="38" y="18" width="6" height="24" rx="1" fill={color} opacity="0.7">
+          <animate attributeName="height" values="24;28;24" dur="2s" repeatCount="indefinite" />
+        </rect>
+      </svg>
+    ),
+    wallet: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <rect x="6" y="12" width="36" height="26" rx="3" fill={color} opacity="0.2" />
+        <rect x="6" y="12" width="36" height="26" rx="3" stroke={color} strokeWidth="2" fill="none" />
+        <rect x="32" y="20" width="10" height="10" rx="2" fill={color} opacity="0.8">
+          <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+        </rect>
+        <circle cx="37" cy="25" r="2" fill="#fff" opacity="0.8" />
+        <path d="M12 18H28" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+      </svg>
+    ),
+    trading: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <path d="M8 30L16 20L24 26L32 14L40 22" stroke={color} strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <animate attributeName="d" values="M8 30L16 20L24 26L32 14L40 22;M8 28L16 24L24 18L32 26L40 16;M8 30L16 20L24 26L32 14L40 22" dur="3s" repeatCount="indefinite" />
+        </path>
+        <path d="M32 14L40 22L32 22L32 14Z" fill={color} opacity="0.6" />
+        <circle cx="40" cy="22" r="3" fill={color}>
+          <animate attributeName="cy" values="22;16;22" dur="3s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    ),
+    staking: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <circle cx="24" cy="24" r="16" stroke={color} strokeWidth="2" fill="none" opacity="0.3" />
+        <circle cx="24" cy="24" r="10" fill={color} opacity="0.2">
+          <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <path d="M24 14V24L30 20" stroke={color} strokeWidth="2.5" strokeLinecap="round" fill="none" />
+        <circle cx="24" cy="24" r="3" fill={color} />
+      </svg>
+    ),
+    security: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <path d="M24 6L8 14V24C8 32 16 40 24 42C32 40 40 32 40 24V14L24 6Z" fill={color} opacity="0.2" />
+        <path d="M24 6L8 14V24C8 32 16 40 24 42C32 40 40 32 40 24V14L24 6Z" stroke={color} strokeWidth="2" fill="none" />
+        <path d="M18 24L22 28L30 20" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <animate attributeName="stroke-dasharray" values="0,100;100,0" dur="2s" repeatCount="indefinite" />
+        </path>
+      </svg>
+    ),
+    defi: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <circle cx="14" cy="24" r="8" fill={color} opacity="0.3" />
+        <circle cx="34" cy="24" r="8" fill={color} opacity="0.3" />
+        <circle cx="24" cy="14" r="8" fill={color} opacity="0.3" />
+        <path d="M20 18L14 22M28 18L34 22M24 22V28" stroke={color} strokeWidth="2.5" strokeLinecap="round">
+          <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+        </path>
+        <circle cx="14" cy="24" r="4" fill={color} />
+        <circle cx="34" cy="24" r="4" fill={color} />
+        <circle cx="24" cy="14" r="4" fill={color} />
+      </svg>
+    ),
+    community: ({ color = 'currentColor' }) => (
+      <svg viewBox="0 0 48 48" fill="none" className="service-svg-icon">
+        <circle cx="24" cy="18" r="6" fill={color} opacity="0.6" />
+        <circle cx="12" cy="30" r="5" fill={color} opacity="0.4" />
+        <circle cx="36" cy="30" r="5" fill={color} opacity="0.4" />
+        <path d="M24 24C24 24 18 28 12 35M24 24C24 24 30 28 36 35" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.5">
+          <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite" />
+        </path>
+      </svg>
     )
   };
 
