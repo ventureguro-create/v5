@@ -2747,6 +2747,9 @@ html { scroll-behavior: smooth; }
   flex-direction: column;
   justify-content: center;
 }
+.team-card.team-card-small .team-card-info {
+  padding: 16px;
+}
 
 .team-member-name {
   font-size: 22px;
