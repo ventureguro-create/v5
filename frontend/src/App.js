@@ -3040,10 +3040,8 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
     setFaqs(prev => [
       ...prev,
       { 
-        question_ru: 'Новый вопрос', 
-        question_en: 'New question',
-        answer_ru: 'Ответ на вопрос', 
-        answer_en: 'Answer to the question',
+        question: 'New question', 
+        answer: 'Answer to the question',
         order: prev.length 
       }
     ]);
@@ -3054,10 +3052,10 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
     if (faq.id) {
       try {
         await axios.delete(`${API}/faq/${faq.id}`);
-        setMessage('✅ FAQ удален');
+        setMessage('✅ FAQ deleted');
         setTimeout(() => setMessage(''), 2000);
       } catch (err) {
-        setMessage('❌ Ошибка удаления');
+        setMessage('❌ Delete error');
         console.error(err);
       }
     }
@@ -3085,11 +3083,11 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
           });
         }
       }
-      setMessage('✅ FAQ сохранены!');
+      setMessage('✅ FAQ saved!');
       onFAQUpdate();
       setTimeout(() => setMessage(''), 3000);
     } catch (err) {
-      setMessage('❌ Ошибка сохранения');
+      setMessage('❌ Save error');
       console.error(err);
     } finally {
       setSaving(false);
@@ -3101,9 +3099,9 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
       {message && <div className="admin-message">{message}</div>}
       
       <div className="faq-admin-header">
-        <h3>❓ Вопросы и ответы (FAQ)</h3>
+        <h3>❓ Frequently Asked Questions (FAQ)</h3>
         <p style={{ fontSize: '13px', color: '#6b7280', marginTop: '8px' }}>
-          Управляйте часто задаваемыми вопросами. Рекомендуется 6 вопросов для оптимального отображения.
+          Manage frequently asked questions. 6 questions recommended for optimal display.
         </p>
       </div>
 
@@ -3115,48 +3113,28 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
               <button 
                 onClick={() => removeFAQ(index)}
                 className="btn-danger-small"
-                title="Удалить"
+                title="Delete"
               >
                 🗑️
               </button>
             </div>
             
             <div className="form-group">
-              <label>🇷🇺 Вопрос (Русский)</label>
+              <label>Question</label>
               <input
                 type="text"
-                value={faq.question_ru || ''}
-                onChange={e => handleFAQChange(index, 'question_ru', e.target.value)}
-                placeholder="Введите вопрос на русском"
+                value={faq.question || ''}
+                onChange={e => handleFAQChange(index, 'question', e.target.value)}
+                placeholder="Enter question"
               />
             </div>
             
             <div className="form-group">
-              <label>🇬🇧 Вопрос (English)</label>
-              <input
-                type="text"
-                value={faq.question_en || ''}
-                onChange={e => handleFAQChange(index, 'question_en', e.target.value)}
-                placeholder="Enter question in English"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>🇷🇺 Ответ (Русский)</label>
+              <label>Answer</label>
               <textarea
-                value={faq.answer_ru || ''}
-                onChange={e => handleFAQChange(index, 'answer_ru', e.target.value)}
-                placeholder="Введите ответ на русском"
-                rows={3}
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>🇬🇧 Ответ (English)</label>
-              <textarea
-                value={faq.answer_en || ''}
-                onChange={e => handleFAQChange(index, 'answer_en', e.target.value)}
-                placeholder="Enter answer in English"
+                value={faq.answer || ''}
+                onChange={e => handleFAQChange(index, 'answer', e.target.value)}
+                placeholder="Enter answer"
                 rows={3}
               />
             </div>
@@ -3165,12 +3143,12 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
       </div>
 
       <button onClick={addFAQ} className="btn-secondary" style={{ marginTop: '16px' }}>
-        ➕ Добавить вопрос
+        ➕ Add Question
       </button>
 
       <div className="faq-admin-save">
         <button onClick={handleSave} className="btn-primary btn-large" disabled={saving}>
-          {saving ? '💾 Сохранение...' : '💾 Сохранить все FAQ'}
+          {saving ? '💾 Saving...' : '💾 Save All FAQ'}
         </button>
       </div>
     </div>
