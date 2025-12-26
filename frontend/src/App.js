@@ -5447,7 +5447,7 @@ const HeroSection = ({ heroSettings }) => {
 // About Section
 const AboutSection = ({ whitepaperUrl }) => {
   const [aboutSettings, setAboutSettings] = useState(null);
-  const t = useTranslation();
+  const { language } = useLanguage();
 
   useEffect(() => {
     const fetchAboutSettings = async () => {
