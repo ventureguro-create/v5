@@ -583,7 +583,7 @@ const ProjectDrawer = ({ cards }) => {
         </button>
       </div>
       
-      <p className="drawer-hint-carousel">Кликните на карточку для перехода • Стрелки для навигации</p>
+      <p className="drawer-hint-carousel">Click on card to navigate • Use arrows for browsing</p>
       
       <div className="drawer-indicators">
         {cards.map((_, index) => (
