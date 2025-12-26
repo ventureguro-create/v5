@@ -6868,27 +6868,27 @@ const TeamSection = () => {
                       {member.image_url ? (
                         <img 
                           src={member.image_url.startsWith('/') ? `${BACKEND_URL}${member.image_url}` : member.image_url}
-                          alt={getLangFieldWithContext(member, 'name', language)}
+                          alt={member.name_en}
                         />
                       ) : (
                         <div className="team-avatar-placeholder">
-                          <span>{(getLangFieldWithContext(member, 'name', language) || 'U').charAt(0)}</span>
+                          <span>{(member.name_en || 'U').charAt(0)}</span>
                         </div>
                       )}
                     </div>
                     <div className="team-card-info">
-                      <h3 className="team-member-name">{getLangFieldWithContext(member, 'name', language)}</h3>
-                      <p className="team-member-position">{getLangFieldWithContext(member, 'position', language)}</p>
+                      <h3 className="team-member-name">{member.name_en}</h3>
+                      <p className="team-member-position">{member.position_en}</p>
                     </div>
                   </div>
 
                   {/* Back Side */}
                   <div className="team-card-back">
                     <div className="team-card-back-content">
-                      <h3 className="team-member-name-back">{getLangFieldWithContext(member, 'name', language)}</h3>
-                      <p className="team-member-position-back">{getLangFieldWithContext(member, 'position', language)}</p>
+                      <h3 className="team-member-name-back">{member.name_en}</h3>
+                      <p className="team-member-position-back">{member.position_en}</p>
                       <div className="team-member-bio">
-                        {getLangFieldWithContext(member, 'bio', language)}
+                        {member.bio_en}
                       </div>
                       {member.social_links && member.displayed_socials && member.displayed_socials.length > 0 && (
                         <div className="team-social-links">
