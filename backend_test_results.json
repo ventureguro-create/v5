@@ -1,0 +1,104 @@
+{
+  "total_tests": 16,
+  "passed_tests": 15,
+  "failed_tests": 1,
+  "success_rate": 93.75,
+  "test_details": [
+    {
+      "test_name": "Basic API Connectivity",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.577927"
+    },
+    {
+      "test_name": "Admin Login",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.615311"
+    },
+    {
+      "test_name": "Admin Login (Wrong Password)",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.655025"
+    },
+    {
+      "test_name": "Get Drawer Cards (Empty)",
+      "success": true,
+      "details": "Found 5 cards",
+      "timestamp": "2025-12-24T22:52:10.695301"
+    },
+    {
+      "test_name": "Create Drawer Card",
+      "success": true,
+      "details": "Created card with ID: 02234a04-01c2-424f-9e0c-a8e07fe0043a",
+      "timestamp": "2025-12-24T22:52:10.737700"
+    },
+    {
+      "test_name": "Get Specific Drawer Card",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.777020"
+    },
+    {
+      "test_name": "Update Drawer Card",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.812301"
+    },
+    {
+      "test_name": "Delete Drawer Card",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.850985"
+    },
+    {
+      "test_name": "Get Team Members (Empty)",
+      "success": true,
+      "details": "Found 4 members",
+      "timestamp": "2025-12-24T22:52:10.891669"
+    },
+    {
+      "test_name": "Create Team Member",
+      "success": true,
+      "details": "Created member with ID: ea867ba5-29c1-4b41-9ff2-30ab98eef22b",
+      "timestamp": "2025-12-24T22:52:10.940156"
+    },
+    {
+      "test_name": "Get Specific Team Member",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:10.974995"
+    },
+    {
+      "test_name": "Update Team Member",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:11.053836"
+    },
+    {
+      "test_name": "Delete Team Member",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:11.099175"
+    },
+    {
+      "test_name": "Image Upload",
+      "success": false,
+      "details": "PIL not available, skipping image upload test",
+      "timestamp": "2025-12-24T22:52:11.099915"
+    },
+    {
+      "test_name": "Create Status Check",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-24T22:52:11.141889"
+    },
+    {
+      "test_name": "Get Status Checks",
+      "success": true,
+      "details": "Found 2 status checks",
+      "timestamp": "2025-12-24T22:52:11.177748"
+    }
+  ]
+}
