@@ -6969,39 +6969,6 @@ const TeamSection = () => {
       </div>
       </>
       )}
-
-      {/* Team Members Section */}
-      {teamMembers.length > 0 && (
-        <div className="team-members-section">
-          <div className="max-w-7xl mx-auto px-6">
-            <h3 className="team-members-title">{t('team.teamMembers')}</h3>
-            <div className="team-members-grid">
-              {teamMembers.map((member) => {
-                const initials = getLangFieldWithContext(member, 'name', language)
-                  .split(' ')
-                  .map(n => n.charAt(0))
-                  .join('')
-                  .toUpperCase()
-                  .slice(0, 2);
-
-                return (
-                  <div key={member.id} className="team-member-card">
-                    <div className="team-member-avatar">
-                      {member.image_url ? (
-                        <img src={member.image_url} alt={getLangFieldWithContext(member, 'name', language)} />
-                      ) : (
-                        <span className="team-member-initials">{initials}</span>
-                      )}
-                    </div>
-                    <h4 className="team-member-name">{getLangFieldWithContext(member, 'name', language)}</h4>
-                    <p className="team-member-position">{getLangFieldWithContext(member, 'position', language)}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
