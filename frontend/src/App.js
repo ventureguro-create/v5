@@ -5652,9 +5652,6 @@ const HeroSection = ({ heroSettings }) => {
           </div>
         </div>
       </div>
-      
-      {/* Buy NFT Modal */}
-      <BuyNFTModal isOpen={showNFTModal} onClose={() => setShowNFTModal(false)} nftSettings={nftSettings} />
     </section>
   );
 };
