@@ -128,11 +128,11 @@ class FOMOBackendTester:
                         self.log_test("Get Specific Drawer Card", False, f"Status code: {response.status_code}")
                     
                     # Test UPDATE card
-                    update_data = {"title": "Updated Test Project"}
+                    update_data = {"title_en": "Updated Test Project", "title_ru": "Updated Test Project"}
                     response = requests.put(f"{self.api_url}/drawer-cards/{card_id}", json=update_data, timeout=10)
                     if response.status_code == 200:
                         updated_card = response.json()
-                        if updated_card.get("title") == "Updated Test Project":
+                        if updated_card.get("title_en") == "Updated Test Project":
                             self.log_test("Update Drawer Card", True)
                         else:
                             self.log_test("Update Drawer Card", False, "Title not updated")
