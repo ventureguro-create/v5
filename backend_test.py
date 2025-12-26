@@ -174,15 +174,19 @@ class FOMOBackendTester:
 
         # Test CREATE team member
         test_member = {
-            "name": "Test Member",
-            "position": "Test Position",
-            "bio": "Test bio for team member",
+            "name_en": "Test Member",
+            "name_ru": "Test Member",
+            "position_en": "Test Position",
+            "position_ru": "Test Position",
+            "bio_en": "Test bio for team member",
+            "bio_ru": "Test bio for team member",
             "image_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400",
             "social_links": {
                 "twitter": "https://twitter.com/test",
                 "linkedin": "https://linkedin.com/in/test"
             },
             "displayed_socials": ["twitter", "linkedin"],
+            "member_type": "main",
             "order": 0
         }
         
