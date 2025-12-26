@@ -8434,7 +8434,7 @@ const MainSite = () => {
       <HeroSection heroSettings={heroSettings} />
       <AboutSection whitepaperUrl={footerSettings?.whitepaper_url} />
       <PlatformOverview platformSettings={platformSettings} />
-      <MyProductsSection cards={platformSettings?.service_modules || cards} />
+      <MyProductsSection cards={cards} />
       <RoadmapSection roadmapData={roadmapData} />
       <EvolutionSection />
       <TeamSection />
