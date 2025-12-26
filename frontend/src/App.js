@@ -412,6 +412,7 @@ const getLangField = getLangFieldWithContext;
 const ProjectDrawer = ({ cards }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const { language } = useLanguage();
 
   const getCardStyle = (index, total) => {
     // Circular carousel effect - cards rotate around center
