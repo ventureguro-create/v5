@@ -5493,6 +5493,12 @@ const HeroSection = ({ heroSettings }) => {
     max_per_wallet: 100
   };
   
+  // Get text content from heroSettings or fallback to translations
+  const badge = language === 'ru' ? (heroSettings?.badge_ru || t('hero.badge')) : (heroSettings?.badge_en || t('hero.badge'));
+  const titleLine1 = language === 'ru' ? (heroSettings?.title_line1_ru || t('hero.titleLine1')) : (heroSettings?.title_line1_en || t('hero.titleLine1'));
+  const titleLine2 = language === 'ru' ? (heroSettings?.title_line2_ru || t('hero.titleLine2')) : (heroSettings?.title_line2_en || t('hero.titleLine2'));
+  const subtitle = language === 'ru' ? (heroSettings?.subtitle_ru || t('hero.subtitle')) : (heroSettings?.subtitle_en || t('hero.subtitle'));
+  
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden" data-testid="hero-section">
       <div className="hero-background">
@@ -5507,16 +5513,16 @@ const HeroSection = ({ heroSettings }) => {
           <div className="text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-700 text-sm font-medium mb-6">
               <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-              {t('hero.badge')}
+              {badge}
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6" data-testid="hero-title">
-              {t('hero.titleLine1')}
-              <span className="block bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">{t('hero.titleLine2')}</span>
+              {titleLine1}
+              <span className="block bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">{titleLine2}</span>
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-8 max-w-xl">
-              {t('hero.subtitle')}
+              {subtitle}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
