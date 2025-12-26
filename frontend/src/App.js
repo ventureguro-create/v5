@@ -3180,14 +3180,10 @@ const FAQAdminContent = ({ faqData, onFAQUpdate }) => {
 // ==================== HERO ADMIN CONTENT ====================
 const HeroAdminContent = () => {
   const [settings, setSettings] = useState({
-    badge_ru: 'Сейчас в Beta v1.1',
-    badge_en: 'Now in Beta v1.1',
-    title_line1_ru: 'Будущее',
-    title_line1_en: 'The Future of',
-    title_line2_ru: 'Крипто Аналитики',
-    title_line2_en: 'Crypto Analytics',
-    subtitle_ru: 'Откройте для себя комплексную платформу, объединяющую социальное взаимодействие, аналитику данных и доступ к крипто-проектам, NFT и многому другому.',
-    subtitle_en: 'Discover a comprehensive platform combining social engagement, data analytics, and seamless access to crypto projects, NFTs, and more.',
+    badge: 'Now in Beta v1.1',
+    title_line1: 'The Future of',
+    title_line2: 'Crypto Analytics',
+    subtitle: 'Discover a comprehensive platform combining social engagement, data analytics, and seamless access to crypto projects, NFTs, and more.',
     stats: [
       { value: '10K+', label_en: 'Active Users', label_ru: 'Активных пользователей' },
       { value: '$50M+', label_en: 'Trading Volume', label_ru: 'Объём торгов' },
@@ -3217,14 +3213,10 @@ const HeroAdminContent = () => {
         if (res.data) {
           setSettings(prev => ({
             ...prev,
-            badge_ru: res.data.badge_ru || prev.badge_ru,
-            badge_en: res.data.badge_en || prev.badge_en,
-            title_line1_ru: res.data.title_line1_ru || prev.title_line1_ru,
-            title_line1_en: res.data.title_line1_en || prev.title_line1_en,
-            title_line2_ru: res.data.title_line2_ru || prev.title_line2_ru,
-            title_line2_en: res.data.title_line2_en || prev.title_line2_en,
-            subtitle_ru: res.data.subtitle_ru || prev.subtitle_ru,
-            subtitle_en: res.data.subtitle_en || prev.subtitle_en,
+            badge: res.data.badge || prev.badge,
+            title_line1: res.data.title_line1 || prev.title_line1,
+            title_line2: res.data.title_line2 || prev.title_line2,
+            subtitle: res.data.subtitle || prev.subtitle,
             stats: res.data.stats || prev.stats,
             nft_settings: res.data.nft_settings || prev.nft_settings,
             action_buttons: res.data.action_buttons || prev.action_buttons
