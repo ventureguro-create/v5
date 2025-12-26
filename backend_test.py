@@ -373,6 +373,9 @@ class FOMOBackendTester:
         # Test image upload
         self.test_image_upload()
         
+        # Test about settings
+        self.test_about_settings()
+        
         # Test status endpoints
         self.test_status_endpoints()
         
