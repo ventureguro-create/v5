@@ -2704,6 +2704,10 @@ html { scroll-behavior: smooth; }
   position: relative;
 }
 
+.team-card.team-card-small .team-card-image {
+  height: 200px;
+}
+
 .team-card-image img {
   width: 100%;
   height: 100%;
