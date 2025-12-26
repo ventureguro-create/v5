@@ -3428,7 +3428,7 @@ const HeroAdminContent = () => {
           🔘 Hero Call-to-Action Buttons
         </h3>
         <p style={{ fontSize: '13px', color: '#6b7280', marginBottom: '16px' }}>
-          Configure the main CTA buttons in Hero section (Explore Platform, Buy NFT, etc.)
+          Configure the main CTA buttons in Hero section. <strong>Maximum 3 buttons</strong> (2 recommended for optimal design).
         </p>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
