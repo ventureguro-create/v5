@@ -5542,67 +5542,228 @@ const Navigation = () => {
 };
 
 // Interactive Chart Component
+// ==================== CLEARSTREET-STYLE DASHBOARD MOCKUP ====================
 const InteractiveChart = () => {
-  const [data, setData] = useState([40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88]);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isAnimating, setIsAnimating] = useState(true);
+  // Market data based on FOMO.cx
+  const marketData = {
+    totalMarketCap: '$2.98T',
+    marketCapChange: '+1.15%',
+    btcDominance: '59.29%',
+    ethDominance: '12.01%',
+    volume24h: '$86.0B',
+    volumeChange: '+31.55%',
+    fearGreed: 27,
+  };
 
-  useEffect(() => {
-    if (!isAnimating) return;
-    const interval = setInterval(() => {
-      setData(prev => prev.map(v => Math.max(20, Math.min(100, v + (Math.random() - 0.5) * 15))));
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [isAnimating]);
+  // Equity chart data - simulating market performance
+  const equityData = [35, 42, 38, 55, 48, 65, 58, 72, 68, 85, 78, 92, 88, 95, 90];
+  
+  // P&L performance data
+  const pnlData = [20, 25, 22, 35, 30, 45, 40, 52, 48, 60, 55, 65, 62, 70, 68];
+  const benchmarkData = [25, 28, 30, 32, 35, 38, 42, 45, 48, 50, 53, 56, 58, 60, 62];
 
   return (
-    <div className="chart-container">
-      <div className="chart-header">
-        <span className="text-gray-900 font-semibold text-lg">Market Overview</span>
-        <div className="flex items-center gap-2">
-          <button 
-            onClick={() => setIsAnimating(!isAnimating)} 
-            className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${isAnimating ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-100 text-gray-500'}`}
-          >
-            {isAnimating ? 'Live' : 'Paused'}
-          </button>
-        </div>
-      </div>
-      <div className="chart-area">
-        {data.map((h, i) => (
-          <div 
-            key={i} 
-            className="chart-bar-container"
-            onMouseEnter={() => setHoveredIndex(i)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            <div 
-              className={`chart-bar ${hoveredIndex === i ? 'hovered' : ''}`}
-              style={{ height: `${h}%` }}
-            />
-            {hoveredIndex === i && (
-              <div className="chart-tooltip">
-                ${(h * 1000).toFixed(0)}
-              </div>
-            )}
+    <div className="dashboard-mockup">
+      {/* Main Equity Panel */}
+      <div className="dashboard-panel equity-panel">
+        <div className="panel-header">
+          <div className="panel-title-group">
+            <span className="panel-label">Portfolio Value</span>
+            <div className="panel-tabs">
+              <span className="tab">Daily</span>
+              <span className="tab">Weekly</span>
+              <span className="tab active">Monthly</span>
+              <span className="tab">YTD</span>
+            </div>
           </div>
-        ))}
+        </div>
+        <div className="equity-value-row">
+          <span className="equity-value">{marketData.totalMarketCap}</span>
+          <span className="equity-change positive">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" />
+            </svg>
+            {marketData.marketCapChange}
+          </span>
+        </div>
+        
+        {/* Area Chart */}
+        <div className="equity-chart">
+          <svg viewBox="0 0 300 100" preserveAspectRatio="none" className="area-chart">
+            <defs>
+              <linearGradient id="equityGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#10b981" stopOpacity="0.05" />
+              </linearGradient>
+            </defs>
+            <path
+              d={`M0,${100 - equityData[0]} ${equityData.map((v, i) => `L${(i / (equityData.length - 1)) * 300},${100 - v}`).join(' ')} L300,100 L0,100 Z`}
+              fill="url(#equityGradient)"
+            />
+            <path
+              d={`M0,${100 - equityData[0]} ${equityData.map((v, i) => `L${(i / (equityData.length - 1)) * 300},${100 - v}`).join(' ')}`}
+              fill="none"
+              stroke="#10b981"
+              strokeWidth="2"
+            />
+          </svg>
+          <div className="chart-labels">
+            <span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span>
+          </div>
+        </div>
       </div>
-      <div className="chart-stats">
-        <div className="stat-box">
-          <span className="text-gray-500 text-xs">BTC</span>
-          <span className="text-gray-900 font-bold">$87,514</span>
-          <span className="stat-change positive">+2.4%</span>
+
+      {/* P&L Performance Panel */}
+      <div className="dashboard-panel pnl-panel">
+        <div className="panel-header">
+          <span className="panel-label">P&L Performance</span>
+          <div className="panel-tabs small">
+            <span className="tab active">MTD</span>
+            <span className="tab">QTD</span>
+            <span className="tab">YTD</span>
+          </div>
         </div>
-        <div className="stat-box">
-          <span className="text-gray-500 text-xs">ETH</span>
-          <span className="text-gray-900 font-bold">$2,961</span>
-          <span className="stat-change positive">+1.8%</span>
+        <div className="pnl-value-row">
+          <span className="pnl-value positive">+$346,012.97</span>
+          <span className="pnl-change positive">+3.41%</span>
         </div>
-        <div className="stat-box">
-          <span className="text-gray-500 text-xs">SOL</span>
-          <span className="text-gray-900 font-bold">$123.91</span>
-          <span className="stat-change negative">-0.5%</span>
+        
+        {/* Line Chart */}
+        <div className="pnl-chart">
+          <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="line-chart">
+            {/* Benchmark line */}
+            <path
+              d={`M0,${60 - benchmarkData[0] * 0.8} ${benchmarkData.map((v, i) => `L${(i / (benchmarkData.length - 1)) * 200},${60 - v * 0.8}`).join(' ')}`}
+              fill="none"
+              stroke="#f59e0b"
+              strokeWidth="1.5"
+              strokeDasharray="4,4"
+              opacity="0.7"
+            />
+            {/* P&L line */}
+            <path
+              d={`M0,${60 - pnlData[0] * 0.8} ${pnlData.map((v, i) => `L${(i / (pnlData.length - 1)) * 200},${60 - v * 0.8}`).join(' ')}`}
+              fill="none"
+              stroke="#06b6d4"
+              strokeWidth="2"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Right Side Panels */}
+      <div className="dashboard-side-panels">
+        {/* Market Stats Panel */}
+        <div className="dashboard-panel stats-panel">
+          <div className="panel-header">
+            <span className="panel-label">Market Stats</span>
+            <span className="live-badge">Live</span>
+          </div>
+          <div className="stats-grid">
+            <div className="stat-item">
+              <span className="stat-label">BTC Dominance</span>
+              <span className="stat-value">{marketData.btcDominance}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">ETH Dominance</span>
+              <span className="stat-value">{marketData.ethDominance}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">24h Volume</span>
+              <span className="stat-value">{marketData.volume24h}</span>
+              <span className="stat-change-small positive">{marketData.volumeChange}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Fear & Greed Panel */}
+        <div className="dashboard-panel gauge-panel">
+          <div className="panel-header">
+            <span className="panel-label">Fear & Greed Index</span>
+          </div>
+          <div className="gauge-container">
+            <svg viewBox="0 0 100 60" className="gauge-svg">
+              <defs>
+                <linearGradient id="gaugeGradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#ef4444" />
+                  <stop offset="25%" stopColor="#f59e0b" />
+                  <stop offset="50%" stopColor="#eab308" />
+                  <stop offset="75%" stopColor="#84cc16" />
+                  <stop offset="100%" stopColor="#22c55e" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M10,50 A40,40 0 0,1 90,50"
+                fill="none"
+                stroke="url(#gaugeGradient)"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              {/* Needle */}
+              <line
+                x1="50"
+                y1="50"
+                x2={50 + Math.cos((Math.PI * (1 - marketData.fearGreed / 100)) + Math.PI) * 30}
+                y2={50 + Math.sin((Math.PI * (1 - marketData.fearGreed / 100)) + Math.PI) * 30}
+                stroke="#fff"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <circle cx="50" cy="50" r="4" fill="#fff" />
+            </svg>
+            <div className="gauge-value">
+              <span className="gauge-number">{marketData.fearGreed}</span>
+              <span className="gauge-label">Fear</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Top Tokens Panel */}
+        <div className="dashboard-panel tokens-panel">
+          <div className="panel-header">
+            <span className="panel-label">Top Assets</span>
+          </div>
+          <div className="tokens-list">
+            <div className="token-row">
+              <div className="token-info">
+                <div className="token-icon btc">₿</div>
+                <div className="token-name">
+                  <span className="name">Bitcoin</span>
+                  <span className="symbol">BTC</span>
+                </div>
+              </div>
+              <div className="token-price">
+                <span className="price">$88,648</span>
+                <span className="change positive">+1.34%</span>
+              </div>
+            </div>
+            <div className="token-row">
+              <div className="token-info">
+                <div className="token-icon eth">Ξ</div>
+                <div className="token-name">
+                  <span className="name">Ethereum</span>
+                  <span className="symbol">ETH</span>
+                </div>
+              </div>
+              <div className="token-price">
+                <span className="price">$2,973</span>
+                <span className="change positive">+1.68%</span>
+              </div>
+            </div>
+            <div className="token-row">
+              <div className="token-info">
+                <div className="token-icon sol">◎</div>
+                <div className="token-name">
+                  <span className="name">Solana</span>
+                  <span className="symbol">SOL</span>
+                </div>
+              </div>
+              <div className="token-price">
+                <span className="price">$123.93</span>
+                <span className="change positive">+1.64%</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
