@@ -15,6 +15,7 @@ import shutil
 import base64
 from collections import defaultdict
 import user_agents
+import httpx
 
 
 ROOT_DIR = Path(__file__).parent
