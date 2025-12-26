@@ -6812,10 +6812,6 @@ const TeamSection = () => {
     }
   };
 
-  // Split team into main and team members
-  const mainTeam = team.filter(m => m.member_type === 'main');
-  const teamMembers = team.filter(m => m.member_type === 'team_member');
-
   if (team.length === 0) {
     return (
       <section id="team" className="py-16 bg-white" data-testid="team-section">
