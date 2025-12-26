@@ -7666,12 +7666,12 @@ const FAQSection = ({ faqData }) => {
               }}
             >
               <div className="faq-question-wrapper" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px' }}>
-                <h3 className="faq-question" style={{ fontSize: '20px', fontWeight: '600', color: '#047857', margin: '0', lineHeight: '1.4', flex: '1' }}>{getLangField(faq, 'question')}</h3>
+                <h3 className="faq-question" style={{ fontSize: '20px', fontWeight: '600', color: '#047857', margin: '0', lineHeight: '1.4', flex: '1' }}>{faq.question}</h3>
                 <span className="faq-icon" style={{ fontSize: '32px', fontWeight: '300', color: '#047857', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: '1' }}>{openIndex === index ? '−' : '+'}</span>
               </div>
               {openIndex === index && (
                 <div className="faq-answer" style={{ marginTop: '20px', paddingTop: '20px', borderTop: '2px solid rgba(4, 120, 87, 0.2)', fontSize: '16px', lineHeight: '1.7', color: '#065f46' }}>
-                  {getLangField(faq, 'answer')}
+                  {faq.answer}
                 </div>
               )}
             </div>
