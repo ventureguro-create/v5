@@ -680,14 +680,14 @@ const UnifiedAdminPanel = ({ isOpen, onClose, cards, team, platformSettings, roa
       <div className="admin-panel admin-panel-unified" onClick={e => e.stopPropagation()} data-testid="unified-admin-panel">
         <div className="admin-header">
           <div className="admin-header-left">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+            <h2>
               <img 
                 src="/logo.svg" 
-                alt="FOMO Logo" 
-                style={{ height: '32px', width: 'auto' }}
+                alt="FOMO" 
+                style={{ height: '24px', width: 'auto', verticalAlign: 'middle', marginRight: '8px' }}
               />
-              <h2 style={{ margin: 0 }}>🎛️ FOMO Control Panel</h2>
-            </div>
+              Admin Panel
+            </h2>
             <div className="admin-tabs">
               <button 
                 className={`admin-tab ${activeTab === 'projects' ? 'active' : ''}`}
