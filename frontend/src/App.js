@@ -3522,18 +3522,20 @@ const HeroAdminContent = () => {
         
         <button
           onClick={addHeroButton}
+          disabled={heroButtons.length >= 3}
           style={{
             marginTop: '12px',
             padding: '10px 20px',
-            background: '#f3f4f6',
+            background: heroButtons.length >= 3 ? '#e5e7eb' : '#f3f4f6',
             border: '1px dashed #d1d5db',
             borderRadius: '8px',
-            cursor: 'pointer',
+            cursor: heroButtons.length >= 3 ? 'not-allowed' : 'pointer',
             fontSize: '14px',
-            color: '#6b7280'
+            color: heroButtons.length >= 3 ? '#9ca3af' : '#6b7280',
+            opacity: heroButtons.length >= 3 ? 0.5 : 1
           }}
         >
-          ➕ Add Button
+          ➕ Add Button {heroButtons.length >= 3 ? '(Max 3)' : ''}
         </button>
       </div>
 
