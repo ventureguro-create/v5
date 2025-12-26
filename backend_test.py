@@ -105,7 +105,8 @@ class FOMOBackendTester:
 
         # Test CREATE card
         test_card = {
-            "title": "Test Project",
+            "title_ru": "Test Project",
+            "title_en": "Test Project",
             "link": "https://example.com",
             "image_url": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=800",
             "order": 0
