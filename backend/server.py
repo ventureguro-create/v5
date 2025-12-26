@@ -498,6 +498,51 @@ class HeroSettingsUpdate(BaseModel):
 
 # ==================== DRAWER CARDS API ====================
 
+
+# ==================== ABOUT SETTINGS MODELS ====================
+
+class AboutFeature(BaseModel):
+    icon: str = "diamond"  # diamond, clock, lightning, shield
+    title: str
+    description: str
+    color: str = "emerald"  # emerald, teal, cyan, violet
+
+class AboutSettings(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = "about_settings"
+    badge: str = "About Us"
+    title: str = "What is"
+    title_highlight: str = "FOMO"
+    subtitle: str = "A cutting-edge platform reshaping how users interact with the crypto world"
+    description: str = "FOMO is a cutting-edge platform built to reshape the way users interact with the cryptoworld. Our goal is to create a single, comprehensive ecosystem that combines"
+    social_engagement: str = "social engagement"
+    data_analytics: str = "data analytics"
+    seamless_access: str = "seamless access"
+    description_end: str = "to crypto projects, NFTs, funds, and more."
+    features: List[AboutFeature] = [
+        AboutFeature(icon="diamond", title="Community-Driven", description="Every user influences the project through voting and social engagement.", color="emerald"),
+        AboutFeature(icon="clock", title="24/7 Support", description="Our support never stops. We are here offering guidance every step.", color="teal"),
+        AboutFeature(icon="lightning", title="Fast & Efficient", description="Launch your project quickly with FOMO tools and support.", color="cyan"),
+        AboutFeature(icon="shield", title="Secure & Reliable", description="All transactions via secure smart contracts for max protection.", color="violet"),
+    ]
+    whitepaper_button_text: str = "Whitepaper"
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class AboutSettingsUpdate(BaseModel):
+    badge: Optional[str] = None
+    title: Optional[str] = None
+    title_highlight: Optional[str] = None
+    subtitle: Optional[str] = None
+    description: Optional[str] = None
+    social_engagement: Optional[str] = None
+    data_analytics: Optional[str] = None
+    seamless_access: Optional[str] = None
+    description_end: Optional[str] = None
+    features: Optional[List[AboutFeature]] = None
+    whitepaper_button_text: Optional[str] = None
+
+
 @api_router.get("/drawer-cards", response_model=List[DrawerCard])
 async def get_drawer_cards():
     """Get all drawer cards sorted by order"""
