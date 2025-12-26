@@ -5812,16 +5812,16 @@ const AboutSection = ({ whitepaperUrl }) => {
     <section id="about" className="py-16 bg-white" data-testid="about-section">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-gray-600 text-sm font-medium mb-4">{t.badge}</span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.title} <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">{t.titleHighlight}</span>?</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">{t.subtitle}</p>
+          <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-gray-600 text-sm font-medium mb-4">{badge}</span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{title} <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">{titleHighlight}</span>?</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">{subtitle}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              {t.description} <strong className="text-gray-900">{t.socialEngagement}</strong>, 
-              <strong className="text-gray-900"> {t.dataAnalytics}</strong>, and <strong className="text-gray-900">{t.seamlessAccess}</strong> {t.descriptionEnd}
+              {description} <strong className="text-gray-900">{socialEngagement}</strong>, 
+              <strong className="text-gray-900"> {dataAnalytics}</strong>, and <strong className="text-gray-900">{seamlessAccess}</strong> {descriptionEnd}
             </p>
             <a 
               href={whitepaperUrl || '#'} 
@@ -5843,7 +5843,7 @@ const AboutSection = ({ whitepaperUrl }) => {
                   <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.2s" fill="freeze" />
                 </path>
               </svg>
-              <span>Whitepaper</span>
+              <span>{whitepaperButtonText}</span>
               <svg className="w-4 h-4 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -5851,7 +5851,7 @@ const AboutSection = ({ whitepaperUrl }) => {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            {t.features.map((feature, index) => (
+            {features.map((feature, index) => (
               <div key={index} className="feature-card-animated" data-testid={`feature-card-${index}`}>
                 <div className={`feature-icon-animated ${feature.color}`}>
                   <AnimatedIcon type={feature.icon} />
