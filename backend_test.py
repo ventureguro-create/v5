@@ -269,6 +269,52 @@ class FOMOBackendTester:
             self.log_test("Image Upload", False, f"Error: {str(e)}")
             return False
 
+    def test_about_settings(self):
+        """Test About settings API"""
+        try:
+            # Test GET about settings
+            response = requests.get(f"{self.api_url}/about-settings", timeout=10)
+            if response.status_code == 200:
+                settings = response.json()
+                if settings.get("badge") and settings.get("title") and settings.get("features"):
+                    self.log_test("Get About Settings", True, f"Found settings with {len(settings.get('features', []))} features")
+                    
+                    # Test UPDATE about settings
+                    update_data = {
+                        "badge": "Updated About Us",
+                        "title": "Updated What is",
+                        "title_highlight": "FOMO Updated"
+                    }
+                    response = requests.put(f"{self.api_url}/about-settings", json=update_data, timeout=10)
+                    if response.status_code == 200:
+                        updated_settings = response.json()
+                        if updated_settings.get("badge") == "Updated About Us":
+                            self.log_test("Update About Settings", True)
+                            
+                            # Restore original settings
+                            restore_data = {
+                                "badge": "About Us",
+                                "title": "What is",
+                                "title_highlight": "FOMO"
+                            }
+                            requests.put(f"{self.api_url}/about-settings", json=restore_data, timeout=10)
+                            return True
+                        else:
+                            self.log_test("Update About Settings", False, "Settings not updated properly")
+                            return False
+                    else:
+                        self.log_test("Update About Settings", False, f"Status code: {response.status_code}")
+                        return False
+                else:
+                    self.log_test("Get About Settings", False, f"Invalid settings structure: {settings}")
+                    return False
+            else:
+                self.log_test("Get About Settings", False, f"Status code: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Get About Settings", False, f"Error: {str(e)}")
+            return False
+
     def test_status_endpoints(self):
         """Test status check endpoints"""
         try:
