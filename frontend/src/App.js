@@ -538,7 +538,7 @@ const ProjectDrawer = ({ cards }) => {
               {card.image_url ? (
                 <img 
                   src={card.image_url.startsWith('/') ? `${BACKEND_URL}${card.image_url}` : card.image_url} 
-                  alt={getLangField(card, 'title') || getLangField(card, 'name') || ''}
+                  alt={getLangField(card, 'title', language) || getLangField(card, 'name', language) || ''}
                   loading="lazy"
                 />
               ) : (
@@ -550,8 +550,8 @@ const ProjectDrawer = ({ cards }) => {
             <div className="drawer-card-overlay-carousel">
               <div className="drawer-card-content-carousel">
                 <span className="drawer-card-number-carousel">{String(index + 1).padStart(2, '0')}</span>
-                <h3 className="drawer-card-title-carousel">{getLangField(card, 'title') || getLangField(card, 'name') || ''}</h3>
-                {card.count && <p className="drawer-card-count">{card.count} {getLangField(card, 'label') || ''}</p>}
+                <h3 className="drawer-card-title-carousel">{getLangField(card, 'title', language) || getLangField(card, 'name', language) || ''}</h3>
+                {card.count && <p className="drawer-card-count">{card.count} {getLangField(card, 'label', language) || ''}</p>}
                 {index === currentIndex && (
                   <svg className="drawer-card-arrow-carousel" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
