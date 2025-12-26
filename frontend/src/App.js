@@ -3226,15 +3226,35 @@ const HeroAdminContent = () => {
       nft_settings: { ...prev.nft_settings, [field]: value }
     }));
   };
-
-  const handleButtonChange = (buttonKey, field, value) => {
-    setSettings(prev => ({
+  
+  const handleHeroButtonChange = (index, field, value) => {
+    setHeroButtons(prev => {
+      const newButtons = [...prev];
+      newButtons[index] = { ...newButtons[index], [field]: value };
+      return newButtons;
+    });
+  };
+  
+  const addHeroButton = () => {
+    setHeroButtons(prev => [
       ...prev,
-      action_buttons: {
-        ...prev.action_buttons,
-        [buttonKey]: { ...prev.action_buttons[buttonKey], [field]: value }
+      { label: 'New Button', url: '#', style: 'secondary', order: prev.length, is_active: true }
+    ]);
+  };
+  
+  const removeHeroButton = async (index) => {
+    const button = heroButtons[index];
+    if (button.id) {
+      try {
+        await axios.delete(`${API}/hero-buttons/${button.id}`);
+        setMessage('✅ Button deleted');
+        setTimeout(() => setMessage(''), 2000);
+      } catch (err) {
+        setMessage('❌ Delete error');
+        console.error(err);
       }
-    }));
+    }
+    setHeroButtons(prev => prev.filter((_, i) => i !== index));
   };
 
   const addStat = () => {
@@ -3254,11 +3274,34 @@ const HeroAdminContent = () => {
   const handleSave = async () => {
     setSaving(true);
     try {
+      // Save hero settings
       await axios.put(`${API}/hero-settings`, settings);
-      setMessage('Settings saved!');
+      
+      // Save or create hero buttons
+      for (const button of heroButtons) {
+        if (button.id) {
+          await axios.put(`${API}/hero-buttons/${button.id}`, {
+            label: button.label,
+            url: button.url,
+            style: button.style,
+            order: button.order,
+            is_active: button.is_active
+          });
+        } else {
+          await axios.post(`${API}/hero-buttons`, {
+            label: button.label,
+            url: button.url,
+            style: button.style,
+            order: button.order || heroButtons.indexOf(button),
+            is_active: button.is_active !== false
+          });
+        }
+      }
+      
+      setMessage('✅ Settings saved!');
       setTimeout(() => setMessage(''), 3000);
     } catch (err) {
-      setMessage('Save error');
+      setMessage('❌ Save error');
       console.error(err);
     } finally {
       setSaving(false);
