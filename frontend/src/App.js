@@ -621,7 +621,8 @@ const UnifiedAdminPanel = ({ isOpen, onClose, cards, team, platformSettings, roa
             { id: 'faq', icon: '❓', label: 'FAQ' },
             { id: 'community', icon: '🌐', label: 'Community' },
             { id: 'evolution', icon: '🚀', label: 'Evolution' },
-            { id: 'hero', icon: '🎯', label: 'Hero/NFT' }
+            { id: 'hero', icon: '🎯', label: 'Hero/NFT' },
+            { id: 'about', icon: '📝', label: 'About' }
           ].map(tab => (
             <button 
               key={tab.id}
