@@ -3173,13 +3173,9 @@ const HeroAdminContent = () => {
       discount_percent: 10,
       total_supply: 666,
       max_per_wallet: 100
-    },
-    action_buttons: {
-      crypto: { label: 'Crypto', url: '#crypto' },
-      core: { label: 'Core', url: '#core' },
-      utility: { label: 'Utility', url: '#utility' }
     }
   });
+  const [heroButtons, setHeroButtons] = useState([]);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -3187,21 +3183,28 @@ const HeroAdminContent = () => {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await axios.get(`${API}/hero-settings`);
-        if (res.data) {
+        const [settingsRes, buttonsRes] = await Promise.all([
+          axios.get(`${API}/hero-settings`),
+          axios.get(`${API}/hero-buttons`)
+        ]);
+        
+        if (settingsRes.data) {
           setSettings(prev => ({
             ...prev,
-            badge: res.data.badge || prev.badge,
-            title_line1: res.data.title_line1 || prev.title_line1,
-            title_line2: res.data.title_line2 || prev.title_line2,
-            subtitle: res.data.subtitle || prev.subtitle,
-            stats: res.data.stats || prev.stats,
-            nft_settings: res.data.nft_settings || prev.nft_settings,
-            action_buttons: res.data.action_buttons || prev.action_buttons
+            badge: settingsRes.data.badge || prev.badge,
+            title_line1: settingsRes.data.title_line1 || prev.title_line1,
+            title_line2: settingsRes.data.title_line2 || prev.title_line2,
+            subtitle: settingsRes.data.subtitle || prev.subtitle,
+            stats: settingsRes.data.stats || prev.stats,
+            nft_settings: settingsRes.data.nft_settings || prev.nft_settings
           }));
         }
+        
+        if (buttonsRes.data) {
+          setHeroButtons(buttonsRes.data);
+        }
       } catch (err) {
-        console.error('Error fetching hero settings:', err);
+        console.error('Error fetching settings:', err);
       } finally {
         setLoading(false);
       }
